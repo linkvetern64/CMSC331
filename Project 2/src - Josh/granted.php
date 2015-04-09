@@ -12,6 +12,7 @@ require_once("getAppointments.php");
 if(!$_SESSION["auth"]){
 	header("Location:index.php");
 }
+//David is poop
 $User_ID = $_SESSION["id"];
 $conn = connect();
 $query = mysql_query("select firstName FROM Advisors WHERE id = '" . $_SESSION["id"] . "'");
