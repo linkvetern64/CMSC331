@@ -5,43 +5,58 @@
 // Project1:  Allows COEIT students to make an individual or group appointment,
 //        or cancel any or all of the previous appointments
 // 
-// individualHeader.php: Header and action file for individual.php
+// cancelAppointmentHeader.php: Header and action file for cancelAppointment.php
 //
 //start the session
-session_start();
+ session_start();
 
 //include global variables => full name, id, and major
 include('globals/globalVariables.php');
+
+//include global functions
+include('globals/myFunctions.php');
+
+//include common methods to connect to database
+include('CommonMethods.php');
+
+//default debug
+$debug = false;
+$COMMON = new Common($debug);
 
 //validation
 $error = false;
 $error_msg = '';
 
+$id = strtolower($student_id);
+$counter = 0;
+
+$sql = "SELECT `advisor`, `appt_type`, `appt_date`, `appt_time` FROM `appointment_list` WHERE `student_id` = '$id'";
+
+$result = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+
+
 if(isset($_POST['continue']))
 {
-  if(!isset($_POST['advisor']))
-  {
-     $error = true;
-     $error_msg = "Please choose one of the following advisors.";
-  }
-  else
-  {
-  
-    //get the value for appointment type
-    $advisor = $_POST['advisor'];
+   if(!isset($_POST['tags']))
+   {
+      $error = true;
+      $error_msg = "Please select an appointment to cancel.";
+   }
+   else
+   {
+      //set the selected tags;
+      $_SESSION['tags[]'] = $_POST['tags'];
 
-    //set the value for appointment type
-    $_SESSION['advisor'] = $advisor;
-  
-    header('Location: showIndividualDate.php');
-  }
+      header('Location: confirmCancel.php');
+   }
 }
 elseif(isset($_POST['go_back']))
 {
-   header('Location: loggedIn.php');
+    header('Location: studentLoggedIn.php');
 }
-?>
 
+
+?>
 
 <!DOCTYPE HTML>
 <html>
@@ -55,7 +70,7 @@ elseif(isset($_POST['go_back']))
     <div class = "fixed">
       <div class="transbox">
         <div class = "header">
-	    <h2>Welcome to Individual Advising</h2>
+	    <h2>Cancel Advising Appointment</h2>
 	    <div class = "h1">UMBC</div>
 	    <div class = "h3">AN HONORS UNIVERSITY IN MARYLAND</div>
         </div>

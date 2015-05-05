@@ -107,7 +107,7 @@ if(isset($_POST['continue']))
         </div>
       </div>
     </div>
-    <img src = "images/blackBackground" alt = "campus view" style="width: 100%; height: 160px; position: fixed top center;" />
+    <img src = "images/campus" alt = "campus view" style="width: 100%; height: 160px; position: fixed top center;" />
   
     <form action = "logout.php" id = "logout" method="POST">
         <div class = "loggedPromt">

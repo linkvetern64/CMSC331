@@ -42,7 +42,7 @@ if(isset($_POST['continue'])){
 }
 elseif(isset($_POST['go_back']))
 {
-  header('Location: loggedIn.php');
+  header('Location: studentLoggedIn.php');
 }
 ?>
 

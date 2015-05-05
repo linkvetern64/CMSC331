@@ -30,7 +30,7 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 //Finally Cleared! then redirect back to main page
-header('Location: index.php');
+header('Location: ../index.php');
 die();
 
 ?>
