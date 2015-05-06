@@ -61,6 +61,13 @@ function getAdvisorByName($name){
 	return mysql_fetch_array($result);
 }
 
+function getAdvisorList(){
+	$conn = connect();
+	$result = mysql_query("SELECT DISTINCT CONCAT(firstName, ' ', lastName) FROM `Advisors` WHERE TRUE");
+	disconnect($conn);
+	return mysql_fetch_array($result);
+}
+
 function getAdvisorByID($id){
 	$conn = connect();
 		 

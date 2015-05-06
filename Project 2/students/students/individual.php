@@ -23,7 +23,7 @@ include("headersFooters/individualHeader.php");
 //include the navigation bar
 include("navigation/navigationBar.php");
 
-
+include("../../advisors/libs.php");
 // File Body!
 ?>
     <div id="section">
@@ -36,6 +36,15 @@ include("navigation/navigationBar.php");
 				    	<!-- radio options for selecting an advisor for indivdual appointment -->
 		     			<span class="error"><font color="red" size="2"><?php echo $error_msg; ?></font></span>
 						<div id="radio">
+							<!-- Dynamically populate advisors list -->
+							<?php
+								$advisors = getAdvisorList();
+		
+								for($i = 0; $i < count($advisors); $i++){
+									
+									echo($advisors[$i]);
+								}
+							?>
 							<input type="radio" name="advisor" value="Catherine Bielawski">Catherine Bielawski</input><br>
 							<input type="radio" name="advisor" value="Josh Abrams">Josh Abrams</input><br>
 							<input type="radio" name="advisor" value="Anne Arey">Anne Arey</input><br>
