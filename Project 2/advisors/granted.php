@@ -37,6 +37,7 @@ disconnect($conn);
 	<link href="styles.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="popups.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="alerts.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="popoutbox.css" rel="stylesheet" type="text/css" media="all" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	
 	<!-- this script makes the alerts on mouse over disappear -->
@@ -52,8 +53,25 @@ disconnect($conn);
 </head>
 <body>
 <div class="alerts error" id="alert"><img src="Pictures/error.png" width="40px" height="40px">error completing function</div>
-<div id="welcome">Welcome back, <?php echo($firstName); ?> [<a href="logout.php">logout</a>]</div>
+<div id="welcome">Welcome back, <?php echo($firstName); ?> [<a href="logout.php">logout</a>],  <a href="#popup1">Settings</a></div>
 
+<!-- POPOUT WINDOW -->
+ 
+<div class="box">
+	
+</div>
+
+<div id="popup1" class="overlay">
+	<div class="popup">
+		<h2>Settings</h2>
+		<a class="close" href="#">X</a>
+		<div class="content">
+			Thank to pop me out of that button, but now i'm done so you can close this window.
+		</div>
+	</div>
+</div>
+
+<!-- END TEST -->
  
 <div id="header">
 
