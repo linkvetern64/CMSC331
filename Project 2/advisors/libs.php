@@ -2,7 +2,7 @@
 session_start();
 function connect(){
 	$db ="jstand1";
-	$conn = @mysql_connect("studentdb.gl.umbc.edu", "jstand1", "Bac0ncool64") or die("Could not connect to MySQL");
+	$conn = @mysql_connect("studentdb.gl.umbc.edu", "jstand1", "jstand1") or die("Could not connect to MySQL");
 	$rs = @mysql_select_db($db, $conn) or die("Could not connect select $db database");
 	return $conn;
 }
