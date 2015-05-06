@@ -61,11 +61,28 @@ function getAdvisorByName($name){
 	return mysql_fetch_array($result);
 }
 
+//Returns a list of the advisors names
 function getAdvisorList(){
 	$conn = connect();
-	$result = mysql_query("SELECT DISTINCT CONCAT(firstName, ' ', lastName) FROM `Advisors` WHERE TRUE");
+	$result = mysql_query("SELECT DISTINCT CONCAT(firstName, ' ', lastName) FROM `Advisors` ");
+	
+	$rows = array();
+	
+	while($row = mysql_fetch_array($result)){
+		$rows[] = $row[0];
+	}
+	
 	disconnect($conn);
-	return mysql_fetch_array($result);
+	return $rows;
+}
+
+//Returns the number of advisors within the advisors table
+function numAdvisors(){
+	$conn = connect();
+	$result = mysql_query("SELECT COUNT(DISTINCT id) FROM `Advisors`");
+	disconnect($conn);
+	$num = mysql_fetch_array($result);
+	return $num[0];
 }
 
 function getAdvisorByID($id){

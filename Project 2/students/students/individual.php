@@ -39,16 +39,11 @@ include("../../advisors/libs.php");
 							<!-- Dynamically populate advisors list -->
 							<?php
 								$advisors = getAdvisorList();
-		
-								for($i = 0; $i < count($advisors); $i++){
-									
-									echo($advisors[$i]);
+								for($i = 0; $i < numAdvisors(); $i++){
+									echo("<input type='radio' name='advisor' value='" . $advisors[$i] . "'>" . $advisors[$i] . "</input><br>");
 								}
 							?>
-							<input type="radio" name="advisor" value="Catherine Bielawski">Catherine Bielawski</input><br>
-							<input type="radio" name="advisor" value="Josh Abrams">Josh Abrams</input><br>
-							<input type="radio" name="advisor" value="Anne Arey">Anne Arey</input><br>
-							<input type="radio" name="advisor" value="Emily Stephens">Emily Stephens</input><br>
+
 						</div>
 					</table>
 				</div>
