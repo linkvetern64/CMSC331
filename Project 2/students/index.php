@@ -24,9 +24,9 @@ include("errorChecks/studentLoginErrorChecks.php");
 	<div id="login">
 	  <div id="triangle"></div>
 	  <h1>Advisor Login</h1>
-	  <form action="?" method="POST">    
-	    <input id="textboxid" type="text" placeholder="Name:" /></br>
-	    <input id="password" type="password" placeholder="Password" /></br>
+	  <form action="../advisors/login.php" method="POST">    
+	    <input id="textboxid" name="name"	type="text" placeholder="Name:" /></br>
+	    <input id="password" name="password" type="password" placeholder="Password" /></br>
 	    <input type="submit" name="advisor_login" id="advisor_login" value="Log in" />
 	  </form>
 	</div>

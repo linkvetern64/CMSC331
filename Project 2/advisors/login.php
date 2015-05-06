@@ -3,7 +3,7 @@ session_start();
 require_once("libs.php");
 
 $UserID = $_POST["name"];
-$Password = $_POST["email"];
+$Password = $_POST["password"];
 
 //Establishes connection to PHPMyadmin which contains the password database
 
@@ -15,10 +15,10 @@ $Password = $_POST["email"];
 		 
 		$_SESSION["auth"] = true;
 		$_SESSION["id"] = $user_data["id"];
-		header("Location:granted.php");
+		header("Location:../advisors/granted.php");
 	}
 	else{
-		header("Location:logout.php");
+		header("Location:../advisors/logout.php");
 		echo("Entry Denied");
 	} 
 

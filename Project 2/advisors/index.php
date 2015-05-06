@@ -28,7 +28,7 @@
 			<input type="text" name="name"><br>
 			<!-- Change type to password from text once you get done -->
 			Password<br>
-			<input type="password" name="email"><br>
+			<input type="password" name="password"><br>
 			<input type="submit">
 			</form>
 		</div>

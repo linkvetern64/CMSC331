@@ -10,7 +10,7 @@ session_start();
 require_once("libs.php");
 require_once("getAppointments.php");
 if(!$_SESSION["auth"]){
-	header("Location:index.php");
+	header("Location:../students/index.php");
 }
 
 $User_ID = $_SESSION["id"];
@@ -33,6 +33,7 @@ disconnect($conn);
 <head>
 	<title>Advisor Homepage</title>
 	<link rel="shortcut icon" href="Pictures/favicon.ico" />
+	<link rel="icon" type="image/png" href="../students/images//icon.png" />
 	<link href="styles.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="popups.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="alerts.css" rel="stylesheet" type="text/css" media="all" />
