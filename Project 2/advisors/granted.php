@@ -48,6 +48,23 @@ disconnect($conn);
         });
 	}	
 	);
+	
+	
+	</script>
+	<script>
+	$(document).mouseup(function (e)
+{
+    var container = new Array();
+    container.push($('#'));
+
+    $.each(container, function(key, value) {
+        if (!$(value).is(e.target) // if the target of the click isn't the container...
+            && $(value).has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            $(value).hide();
+        }
+    });
+});
 	</script>
 	
 </head>
@@ -56,17 +73,16 @@ disconnect($conn);
 <div id="welcome">Welcome back, <?php echo($firstName); ?> [<a href="logout.php">logout</a>],  <a href="#popup1">Settings</a></div>
 
 <!-- POPOUT WINDOW -->
- 
-<div class="box">
-	
-</div>
 
 <div id="popup1" class="overlay">
 	<div class="popup">
 		<h2>Settings</h2>
 		<a class="close" href="#">X</a>
-		<div class="content">
-			Thank to pop me out of that button, but now i'm done so you can close this window.
+			<div class="content">
+			Content<br>
+			<select name="mondayStart">
+				<option value="900">9:00</option>
+			</select>
 		</div>
 	</div>
 </div>
