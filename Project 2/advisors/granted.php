@@ -104,10 +104,10 @@ disconnect($conn);
 		<h2>Settings</h2>
 		<a class="close" href="#">X</a>
 			<div id="content">
-			Content<br>
+			
 			<label>E-mail:<input type="text" align="right"></label><br>
-			<br>
 			<label>Password:<input type="password" align="right" ></label><br>
+			<br>
 			<input type="submit" onclick="pushEmail();"> 
 			</div>	
 			
