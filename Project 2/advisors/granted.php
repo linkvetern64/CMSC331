@@ -7,7 +7,6 @@
 	*file: index.php
 	*/
 session_start();
-include("email.php");
 require_once("libs.php");
 require_once("getAppointments.php");
 if(!$_SESSION["auth"]){
@@ -43,30 +42,33 @@ disconnect($conn);
 	
 	<!-- this script makes the alerts on mouse over disappear -->
 	<script>
-	$(document).ready(function(){
-		$('#alert').mouseover(function() {
-           $("#alert").fadeOut(1000);
-        });
-	}	
+	$(document).ready(function()
+		{
+			$('#alert').mouseover(function() {
+			   $("#alert").fadeOut(1000);
+			});
+		}	
 	);
 	
 	
 	</script>
+	<!-- This function -->
 	<script>
 	$(document).mouseup(function (e)
-{
-    var container = new Array();
-    container.push($('#'));
+	{
+		var container = new Array();
+		container.push($('#'));
 
-    $.each(container, function(key, value) {
-        if (!$(value).is(e.target) // if the target of the click isn't the container...
-            && $(value).has(e.target).length === 0) // ... nor a descendant of the container
-        {
-            $(value).hide();
-        }
-    });
-});
+		$.each(container, function(key, value) {
+			if (!$(value).is(e.target) // if the target of the click isn't the container...
+				&& $(value).has(e.target).length === 0) // ... nor a descendant of the container
+			{
+				$(value).hide();
+			}
+		});
+	});
 	</script>
+	<!--  -->
 	<script type="text/javascript">
 	function showInput() {
 		if (document.getElementById('group').checked) {
@@ -78,9 +80,13 @@ disconnect($conn);
 		document.getElementById('addAppointment').style.height = '173px';
 		}
 	}
-
-	</script>
 	
+	//Sends email when reschedule occurs
+	function pushEmail() {
+		$.get("email.php");
+		return false;
+	}
+	</script>
 </head>
 <body onload="showInput()">
 <div class="alerts error" id="alert"><img src="Pictures/error.png" width="40px" height="40px">error completing function</div>
@@ -92,11 +98,11 @@ disconnect($conn);
 	<div class="popup">
 		<h2>Settings</h2>
 		<a class="close" href="#">X</a>
-			<div class="content">
+			<div id="content">
 			Content<br>
-			<label>E-mail:<input type="text"></label><br>
-			<label>Password:<input type="password"></label><br>
-			<input type="submit" onclick="email.php">
+			<label>E-mail:<input type="text" align="right"></label><br>
+			<label>Password:<input type="password" align="right" ></label><br>
+			<input type="submit" onclick="pushEmail();">
 		</div>
 	</div>
 </div>
