@@ -302,6 +302,8 @@ disconnect($conn);
 <div id="addAppointment">
 	<form action="addAppointment.php" method="post">
 	<label for="appointment">Date: </label><input id="appointment" name="appointmentDate" type="date" value="<?php echo date('Y-m-d'); ?>"/>
+		<label>Single <input type="radio"></label>
+		<label>Group <input type="radio"></label>
 		<div>
 		Start: 
 		<select name="appointmentStart">
