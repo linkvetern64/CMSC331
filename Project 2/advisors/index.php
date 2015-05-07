@@ -9,7 +9,7 @@
 <html>
 <head>
 	<title>CSEE Advising</title>
-	<link href="styles.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="Styles/styles.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="shortcut icon" href="Pictures/favicon.ico" />
 </head>
 <body style="background-color:#445566">

@@ -17,7 +17,7 @@ $User_ID = $_SESSION["id"];
 <head><title>Print Schedule</title>
 
 	<link rel="shortcut icon" href="Pictures/favicon.ico" />
-	<link href="printStyle.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="Styles/printStyle.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 

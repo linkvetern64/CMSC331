@@ -34,10 +34,10 @@ disconnect($conn);
 	<title>Advisor Homepage</title>
 	<link rel="shortcut icon" href="Pictures/favicon.ico" />
 	<link rel="icon" type="image/png" href="../students/images//icon.png" />
-	<link href="styles.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="popups.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="alerts.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="popoutbox.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="Styles/styles.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="Styles/popups.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="Styles/alerts.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="Styles/popoutbox.css" rel="stylesheet" type="text/css" media="all" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	
 	<!-- this script makes the alerts on mouse over disappear -->
@@ -302,8 +302,10 @@ disconnect($conn);
 <div id="addAppointment">
 	<form action="addAppointment.php" method="post">
 	<label for="appointment">Date: </label><input id="appointment" name="appointmentDate" type="date" value="<?php echo date('Y-m-d'); ?>"/>
-		<label>Single <input type="radio"></label>
-		<label>Group <input type="radio"></label>
+		<div id="apptTypes">
+		<label>Single <input type="radio" name="groupType"></label><br>
+		<label>Group <input type="radio" name="groupType"></label>
+		</div>
 		<div>
 		Start: 
 		<select name="appointmentStart">
@@ -325,7 +327,20 @@ disconnect($conn);
 		</div>
 		<br>
 		Student IDs:
+		<!--
 		<textarea rows="6" cols="35" name="studentIDs" placeholder="Enter names as comma seperated list..."></textarea>
+		-->
+		<br>
+		<label>ID: <input type="text" width="30px"></label><br>
+		<label>ID: <input type="text"></label><br>
+		<label>ID: <input type="text"></label><br>
+		<label>ID: <input type="text"></label><br>
+		<label>ID: <input type="text"></label><br>
+		<label>ID: <input type="text"></label><br>
+		<label>ID: <input type="text"></label><br>
+		<label>ID: <input type="text"></label><br>
+		<label>ID: <input type="text"></label><br>
+		<label>ID: <input type="text"></label><br>
 		<br>
 		<input type="submit">
 		<input type="radio" name="editing" value="edit">Edit
