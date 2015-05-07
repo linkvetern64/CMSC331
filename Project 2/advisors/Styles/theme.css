@@ -4,14 +4,26 @@
     height: 60px;
     margin: 5px;
     float: left;
+	margin-left:10px;
 }
 
 #themeList
 {
-	width:500px;
-	height:200px;
-	background-color:#444444;
-	position: absolute;
-	bottom: 0;
+	width:inherit;
+	height:100px;
+	border:thin solid grey;
+	border-radius:20px;
+ 
+	 
+}
 
+#themeWrapper
+{
+	width:500px;
+	height:105px;
+	position:absolute;
+	bottom: 0;
+	float:center;
+	margin-bottom:60px;
+	text-align:center;
 }

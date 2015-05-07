@@ -106,21 +106,21 @@ disconnect($conn);
 			<div id="content">
 			Content<br>
 			<label>E-mail:<input type="text" align="right"></label><br>
-			<label>Password:<input type="password" align="right" ></label><br>
-			<input type="submit" onclick="pushEmail();">
 			<br>
-			Change Theme:
-			 <br>
-			 
-			</div>
-						
-			<div id="themeList">
-			<div class="theme" style="background-color:#550022;color:#444444;"></div>
-			<div class="theme" style="background-color:#f1f1f1;color:#444444;"></div>
-			<div class="theme" style="background-color:#223322;color:#ffffff;"></div>
-			<div class="theme" style="background-color:#111111;color:#ffffff;"></div>
-			<div class="theme" style="background-color:#323232;color:#444444;"></div>
-			<div class="theme" style="background-color:#444444;color:#ffffff;"></div>
+			<label>Password:<input type="password" align="right" ></label><br>
+			<input type="submit" onclick="pushEmail();"> 
+			</div>	
+			
+			<div id="themeWrapper">
+				<h4>Update Theme</h4>
+				<div id="themeList">
+				<div class="theme" style="background-color:#550022;color:#ffffff;"></div>
+				<div class="theme" style="background-color:#f1f1f1;color:#000000;"></div>
+				<div class="theme" style="background-color:#223322;color:#ffffff;"></div>
+				<div class="theme" style="background-color:#111111;color:#ffffff;"></div>
+				<div class="theme" style="background-color:#323232;color:#ffffff;"></div>
+				<div class="theme" style="background-color:#444444;color:#ffffff;"></div>
+				</div>
 			</div>
 			<script>
 			$( ".theme" ).click(function() {
