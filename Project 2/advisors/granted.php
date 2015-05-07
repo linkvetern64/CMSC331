@@ -7,6 +7,7 @@
 	*file: index.php
 	*/
 session_start();
+include("email.php");
 require_once("libs.php");
 require_once("getAppointments.php");
 if(!$_SESSION["auth"]){
@@ -93,9 +94,9 @@ disconnect($conn);
 		<a class="close" href="#">X</a>
 			<div class="content">
 			Content<br>
-			<select name="mondayStart">
-				<option value="900">9:00</option>
-			</select>
+			<label>E-mail:<input type="text"></label><br>
+			<label>Password:<input type="password"></label><br>
+			<input type="submit" onclick="email.php">
 		</div>
 	</div>
 </div>
