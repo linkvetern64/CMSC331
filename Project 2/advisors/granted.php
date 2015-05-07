@@ -39,6 +39,7 @@ disconnect($conn);
 	<link href="Styles/alerts.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="Styles/theme.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="Styles/popoutbox.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	
 	<!-- this script makes the alerts on mouse over disappear -->
@@ -51,8 +52,8 @@ disconnect($conn);
 		}	
 	);
 	
-	
 	</script>
+	 
 	<!-- This function -->
 	<script>
 	$(document).mouseup(function (e)
@@ -88,6 +89,9 @@ disconnect($conn);
 		return false;
 	}
 	</script>
+	<style>
+ 
+  </style>
 </head>
 <body onload="showInput()">
 <div class="alerts error" id="alert"><img src="Pictures/error.png" width="40px" height="40px">error completing function</div>
@@ -104,8 +108,26 @@ disconnect($conn);
 			<label>E-mail:<input type="text" align="right"></label><br>
 			<label>Password:<input type="password" align="right" ></label><br>
 			<input type="submit" onclick="pushEmail();">
+			<br>
 			Change Theme:
-			<div id="theme"></div>
+			 <br>
+			 
+			
+			
+			<span id="result">&nbsp;</span>
+			<div class="theme" style="background-color:blue;"></div>
+			<div class="theme" class="theme" style="background-color:rgb(15,99,30);"></div>
+			<div class="theme" style="background-color:#123456;"></div>
+			<div class="theme" style="background-color:#f11;"></div>
+			<div class="theme" style="background-color:#550022;"></div>
+			
+			<script>
+			$( "div" ).click(function() {
+			  var color = $( this ).css( "background-color" );
+			  $( "#result" ).html( "That div is <span style='color:" +
+				color + ";'>" + color + "</span>." );
+			});
+			</script>
 		</div>
 	</div>
 </div>
