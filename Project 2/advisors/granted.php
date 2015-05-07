@@ -144,7 +144,7 @@ disconnect($conn);
 -->
 </div>
 <div id="wrapper">
-<center><h4>Availability</center></h4>
+<center><h4>Availability 9</center></h4>
 <div id="scheduleMaker">
 <br>
 <form action="calendar.php" method="post">
@@ -445,6 +445,7 @@ disconnect($conn);
 </form>
 <style="text-align:right;">[<a href="print.php">print</a>]</style>
 </div>
+
 </div>
 
 </body>
