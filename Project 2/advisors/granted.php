@@ -93,7 +93,7 @@ disconnect($conn);
  
   </style>
 </head>
-<body onload="showInput()">
+<body onload="showInput()" class="body">
 <div class="alerts error" id="alert"><img src="Pictures/error.png" width="40px" height="40px">error completing function</div>
 <div id="welcome">Welcome back, <?php echo($firstName); ?> [<a href="logout.php">logout</a>],  <a href="#popup1">Settings</a></div>
 
@@ -126,6 +126,7 @@ disconnect($conn);
 			  var color = $( this ).css( "background-color" );
 			  $( "#result" ).html( "That div is <span style='color:" +
 				color + ";'>" + color + "</span>." );
+			  $( ".body" ).css("background-color:"+color);
 			});
 			</script>
 		</div>
