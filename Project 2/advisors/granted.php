@@ -37,6 +37,7 @@ disconnect($conn);
 	<link href="Styles/styles.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="Styles/popups.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="Styles/alerts.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="Styles/theme.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="Styles/popoutbox.css" rel="stylesheet" type="text/css" media="all" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	
@@ -103,6 +104,8 @@ disconnect($conn);
 			<label>E-mail:<input type="text" align="right"></label><br>
 			<label>Password:<input type="password" align="right" ></label><br>
 			<input type="submit" onclick="pushEmail();">
+			Change Theme:
+			<div id="theme"></div>
 		</div>
 	</div>
 </div>
