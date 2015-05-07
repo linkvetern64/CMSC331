@@ -112,23 +112,25 @@ disconnect($conn);
 			Change Theme:
 			 <br>
 			 
-			
-			
-			<span id="result">&nbsp;</span>
-			<div class="theme" style="background-color:blue;"></div>
-			<div class="theme" class="theme" style="background-color:rgb(15,99,30);"></div>
-			<div class="theme" style="background-color:#123456;"></div>
-			<div class="theme" style="background-color:#f11;"></div>
-			<div class="theme" style="background-color:#550022;"></div>
-			
+			</div>
+						
+			<div id="themeList">
+			<div class="theme" style="background-color:#550022;color:#444444;"></div>
+			<div class="theme" style="background-color:#f1f1f1;color:#444444;"></div>
+			<div class="theme" style="background-color:#223322;color:#ffffff;"></div>
+			<div class="theme" style="background-color:#111111;color:#ffffff;"></div>
+			<div class="theme" style="background-color:#323232;color:#444444;"></div>
+			<div class="theme" style="background-color:#444444;color:#ffffff;"></div>
+			</div>
 			<script>
 			$( ".theme" ).click(function() {
-			  var color = $( this ).css( "background-color" );	  
+			  var color = $( this ).css( "background-color" );	
+			  var fontColor = $( this ).css( "color" );
 			  $( 'body' ).css('background', color);
+			  $( 'body'	).css('color', fontColor)
 			});
 			
 			</script>
-		</div>
 	</div>
 </div>
 

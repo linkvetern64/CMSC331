@@ -1,9 +1,17 @@
 .theme
 {
-	
     width: 60px;
     height: 60px;
     margin: 5px;
     float: left;
- 
+}
+
+#themeList
+{
+	width:500px;
+	height:200px;
+	background-color:#444444;
+	position: absolute;
+	bottom: 0;
+
 }
