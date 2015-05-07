@@ -123,11 +123,10 @@ disconnect($conn);
 			
 			<script>
 			$( ".theme" ).click(function() {
-			  var color = $( this ).css( "background-color" );
-			  $( "#result" ).html( "That div is <span style='color:" +
-				color + ";'>" + color + "</span>." );
-			  $( ".body" ).css("background-color:"+color);
+			  var color = $( this ).css( "background-color" );	  
+			  $( 'body' ).css('background', color);
 			});
+			
 			</script>
 		</div>
 	</div>
