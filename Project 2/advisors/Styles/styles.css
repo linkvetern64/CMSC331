@@ -17,8 +17,7 @@ body
 #apptTypes
 {
 	height:40px;
-	width:100px;
-	border:black solid thin;
+	width:200px;	 
 }
 #welcome
 {
@@ -148,7 +147,7 @@ margin: 0 auto;
 	outline: #000000 dotted thin;
 	background-color:auto;
 	width:300px;
-	height:373px;
+	height:370px;
 	float:left;
 	
 }

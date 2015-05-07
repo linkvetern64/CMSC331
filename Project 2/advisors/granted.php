@@ -66,9 +66,22 @@ disconnect($conn);
     });
 });
 	</script>
+	<script type="text/javascript">
+	function showInput() {
+		if (document.getElementById('group').checked) {
+			document.getElementById('ifChecked').style.display = 'block';
+			document.getElementById('addAppointment').style.height = '370px';
+		}
+		else{
+		document.getElementById('ifChecked').style.display = 'none';
+		document.getElementById('addAppointment').style.height = '173px';
+		}
+	}
+
+	</script>
 	
 </head>
-<body>
+<body onload="showInput()">
 <div class="alerts error" id="alert"><img src="Pictures/error.png" width="40px" height="40px">error completing function</div>
 <div id="welcome">Welcome back, <?php echo($firstName); ?> [<a href="logout.php">logout</a>],  <a href="#popup1">Settings</a></div>
 
@@ -303,8 +316,8 @@ disconnect($conn);
 	<form action="addAppointment.php" method="post">
 	<label for="appointment">Date: </label><input id="appointment" name="appointmentDate" type="date" value="<?php echo date('Y-m-d'); ?>"/>
 		<div id="apptTypes">
-		<label>Single <input type="radio" name="groupType"></label><br>
-		<label>Group <input type="radio" name="groupType"></label>
+		<label>Single <input type="radio" checked="checked" onclick="javascript:showInput();" id="single" name="groupType"></label> 
+		<label>Group <input type="radio" onclick="javascript:showInput();" id="group" name="groupType"></label>
 		</div>
 		<div>
 		Start: 
@@ -331,16 +344,18 @@ disconnect($conn);
 		<textarea rows="6" cols="35" name="studentIDs" placeholder="Enter names as comma seperated list..."></textarea>
 		-->
 		<br>
-		<label>ID: <input type="text" width="30px"></label><br>
-		<label>ID: <input type="text"></label><br>
-		<label>ID: <input type="text"></label><br>
-		<label>ID: <input type="text"></label><br>
-		<label>ID: <input type="text"></label><br>
-		<label>ID: <input type="text"></label><br>
-		<label>ID: <input type="text"></label><br>
-		<label>ID: <input type="text"></label><br>
-		<label>ID: <input type="text"></label><br>
-		<label>ID: <input type="text"></label><br>
+		<label>ID 0: <input type="text" width="30px"></label><br>
+		 <div id="ifChecked" style="display:none">
+		<label>ID 1: <input type="text"></label><br>
+		<label>ID 2: <input type="text"></label><br>
+		<label>ID 3: <input type="text"></label><br>
+		<label>ID 4: <input type="text"></label><br>
+		<label>ID 5: <input type="text"></label><br>
+		<label>ID 6: <input type="text"></label><br>
+		<label>ID 7: <input type="text"></label><br>
+		<label>ID 8: <input type="text"></label><br>
+		<label>ID 9: <input type="text"></label><br>
+		 </div>
 		<br>
 		<input type="submit">
 		<input type="radio" name="editing" value="edit">Edit
