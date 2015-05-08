@@ -13,28 +13,52 @@
 //include global variables => full name, id, and major
 include('globals/globalVariables.php');
 
+
 //validation
 $error = false;
 $error_msg = '';
 
 if(isset($_POST['continue']))
 {
+  //Validation
+  $tempDate = explode("-",$_POST['date']);
+  
   if(empty($_POST['date']))
   {
-     $error = true;
-     $error_msg = "Please choose a date.";
+  $error = true;
+  $error_msg = "Please choose a date.";
   }
+
+  //Validation that date selected is within range 
+  elseif(($tempDate[1] == 3 and $tempDate[2] <23) or $tempDate[1] < 3)
+  {
+  $error = true;
+  $error_msg = "Individual appointments start on March 23rd $tempDate[0]";
+  } elseif(($tempDate[1] == 5 and $tempDate[2] > 1) or $tempDate[1] > 5)
+  {
+  $error = true;
+  $error_msg = "Individual appointments end on May 1st";
+  }
+
+  //Validation for valid advisor availability
+  elseif(!availableDate($_POST['date'],$advisor))
+  {
+  $error = true;
+  $error_msg = "$advisor not available that day";
+  }
+
   else
   {
-     //get the value for the appointment date
-     $date = $_POST['date'];
-
-     //set the value for appointment date
-     $_SESSION['date'] = $date;
-
-     header('Location: showIndividualTime.php');
+     	//get the value for the appointment date
+     	$date = $_POST['date'];
+	
+     	//set the value for appointment date
+     	$_SESSION['date'] = $date;
+	
+     	header('Location: showIndividualTime.php');
    }
 }
+
 elseif(isset($_POST['go_back']))
 {
   header('Location: individual.php');
