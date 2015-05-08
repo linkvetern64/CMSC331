@@ -106,4 +106,33 @@ function ifempty(&$array)
   }
 }
 
+//functions
+//availableDate: parameters passed in are day and advisor name
+//		 The function determines the day of the week
+//		 and looks up the advisor ID
+//		 Then checks if that advisor's availability is set
+//		 and if so returns a boolean true/false while
+//		 updating the relevant session information
+function availableDate($date,$advisor) {
+	 //Determine advisor key
+	 $conn = connect();
+		 
+	//Gathers the private key to validate the login user
+	$advisorName = explode(" ",$advisor);
+	$result1 = mysql_fetch_array(mysql_query("SELECT `id` FROM `Advisors` WHERE firstName = '$advisorName[0]' AND lastName = '$advisorName[1]'"));
+	$advisor_id = $result1[0];
+	$_SESSION['advisor_id'] = $advisor_id;
+	
+	//Checks what day of the week it is
+	$dayOfWeek = date('l',strtotime($date));
+
+	//Check if that advisor has availability that day, return result
+	$result2 = mysql_fetch_array(mysql_query("SELECT `" . $dayOfWeek . "` FROM `Availability` WHERE id = $advisor_id"));
+	disconnect($conn);
+
+	$available = $result2[0];
+
+	return $available;	
+}
+
 ?>
