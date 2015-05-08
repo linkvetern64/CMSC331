@@ -142,10 +142,13 @@ disconnect($conn);
 <hr class="faded">
 -->
 </div>
-<div id="rightWrap">shit</div>
+											<div id="dashboard">
+<div id="rightWrap"></div>
 <div id="wrapper">
-<center><h4>Availability</center></h4>
+
 <div id="scheduleMaker">
+<center><h4>Availability</center></h4>
+<hr>
 <br>
 <form action="calendar.php" method="post">
   <input type="checkbox" name="monday" value="Monday" <?php echo(checkDay("monday")); ?>>Monday 
@@ -345,8 +348,10 @@ disconnect($conn);
 </form>
 </div>
 <br>
-<center><h4>Appointment Editor</center></h4>
+
 <div id="addAppointment">
+<center><h4>Appointment Editor</center></h4>
+<hr>
 	<form action="addAppointment.php" method="post">
 	<label for="appointment">Date: </label><input id="appointment" name="appointmentDate" type="date" value="<?php echo date('Y-m-d'); ?>"/>
 		<div id="apptTypes">
@@ -444,6 +449,7 @@ disconnect($conn);
 <input type="submit" value="Update">
 </form>
 <style="text-align:right;">[<a href="print.php">print</a>]</style>
+</div>
 </div>
 </div>
 </body>

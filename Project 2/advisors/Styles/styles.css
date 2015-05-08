@@ -5,6 +5,7 @@ body
          font: 12px Arial, Helvetica, sans-serif;
          background: #f1f1f1;
 }
+
 #title
 {
 	font-size:20px;
@@ -87,8 +88,17 @@ body
 {
 	width:350px;
 	height:300px;
-	background-color:#ff00ff;
+	background-color:auto;
+	border:thin dotted black;
 	float:right;
+}
+
+#dashboard{
+	 
+	width:100%;
+	height:80%;
+	bottom:0;
+	position:absolute;
 }
 
 #timeIDBlock{
@@ -147,7 +157,7 @@ margin: 0 auto;
 	outline: #000000 dotted thin;
 	background-color:auto;
 	width:300px;
-	height:147px;
+	height:203px;
 	float:left;
 	 
 }
@@ -161,11 +171,11 @@ margin: 0 auto;
 #addAppointment
 {
 	outline: #000000 dotted thin;
-	background-color:auto;
+	background-color:#555555;
 	width:300px;
-	height:370px;
+	height:800px;
 	float:left;
-	
+	margin-top:15px;
 }
 
 #dateRight
@@ -206,7 +216,7 @@ margin: 0 auto;
 }
 /*This wraps the adivsors appointment and availability */
 #wrapper{
-	height:500px;
+	height:700px;
 	width:300px;
 	float:left;
 	background-color:auto;
