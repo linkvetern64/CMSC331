@@ -1,4 +1,4 @@
-.body
+body
 {
          margin: 0;
          padding: 0;
@@ -83,14 +83,12 @@
 	text-align:center;
 	 
 }
-
-#rightContainer
+#rightWrap
 {
-	width:100px;
-	height:400px;
-	margin: 0 auto;
-	float: right;
-	background-color:red;
+	width:350px;
+	height:300px;
+	background-color:#ff00ff;
+	float:right;
 }
 
 #timeIDBlock{
@@ -208,7 +206,7 @@ margin: 0 auto;
 }
 /*This wraps the adivsors appointment and availability */
 #wrapper{
-	height:700px;
+	height:500px;
 	width:300px;
 	float:left;
 	background-color:auto;

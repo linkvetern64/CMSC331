@@ -135,7 +135,6 @@ disconnect($conn);
 </div>
 
 <!-- END TEST -->
- 
 <div id="header">
 
 <!--   This is the title and hr
@@ -143,8 +142,9 @@ disconnect($conn);
 <hr class="faded">
 -->
 </div>
+<div id="rightWrap">shit</div>
 <div id="wrapper">
-<center><h4>Availability 9</center></h4>
+<center><h4>Availability</center></h4>
 <div id="scheduleMaker">
 <br>
 <form action="calendar.php" method="post">
@@ -341,7 +341,7 @@ disconnect($conn);
 <br><br>	 
 
   <input type="submit" value="Update">
-	
+
 </form>
 </div>
 <br>
@@ -445,8 +445,6 @@ disconnect($conn);
 </form>
 <style="text-align:right;">[<a href="print.php">print</a>]</style>
 </div>
-
 </div>
-
 </body>
 </html>
