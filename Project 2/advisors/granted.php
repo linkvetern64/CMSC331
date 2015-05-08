@@ -75,11 +75,11 @@ disconnect($conn);
 	function showInput() {
 		if (document.getElementById('group').checked) {
 			document.getElementById('ifChecked').style.display = 'block';
-			document.getElementById('addAppointment').style.height = '370px';
+			document.getElementById('addAppointment').style.height = '425px';
 		}
 		else{
 		document.getElementById('ifChecked').style.display = 'none';
-		document.getElementById('addAppointment').style.height = '173px';
+		document.getElementById('addAppointment').style.height = '228px';
 		}
 	}
 	
