@@ -94,7 +94,9 @@ disconnect($conn);
   </style>
 </head>
 <body onload="showInput()" class="body">
+<!-- HIDES ALERT FOR NOW
 <div class="alerts error" id="alert"><img src="Pictures/error.png" width="40px" height="40px">error completing function</div>
+-->
 <div id="welcome">Welcome back, <?php echo($firstName); ?> [<a href="logout.php">logout</a>],  <a href="#popup1">Settings</a></div>
 
 <!-- POPOUT WINDOW -->
@@ -114,12 +116,12 @@ disconnect($conn);
 			<div id="themeWrapper">
 				<h4>Update Theme</h4>
 				<div id="themeList">
-				<div class="theme" style="background-color:#550022;color:#ffffff;"></div>
-				<div class="theme" style="background-color:#f1f1f1;color:#000000;"></div>
-				<div class="theme" style="background-color:#223322;color:#ffffff;"></div>
-				<div class="theme" style="background-color:#111111;color:#ffffff;"></div>
-				<div class="theme" style="background-color:#323232;color:#ffffff;"></div>
-				<div class="theme" style="background-color:#444444;color:#ffffff;"></div>
+				<div class="theme" style="background-color:#550022;color:#ffffff;cursor: pointer;"></div>
+				<div class="theme" style="background-color:#f1f1f1;color:#000000;cursor: pointer;"></div>
+				<div class="theme" style="background-color:#223322;color:#ffffff;cursor: pointer;"></div>
+				<div class="theme" style="background-color:#111111;color:#ffffff;cursor: pointer;"></div>
+				<div class="theme" style="background-color:#323232;color:#ffffff;cursor: pointer;"></div>
+				<div class="theme" style="background-color:#444444;color:#ffffff;cursor: pointer;"></div>
 				</div>
 			</div>
 			<script>
@@ -142,8 +144,12 @@ disconnect($conn);
 <hr class="faded">
 -->
 </div>
-											<div id="dashboard">
-<div id="rightWrap"></div>
+<div id="dashboard">
+	<div id="rightWrap">
+		<center><h4>Search</h4></center>
+		<hr>
+	
+	</div>
 <div id="wrapper">
 
 <div id="scheduleMaker">
