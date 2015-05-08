@@ -145,13 +145,18 @@ disconnect($conn);
 -->
 </div>
 <div id="dashboard">
+	<!-- encompasses the search function -->
 	<div id="rightWrap">
 		<center><h4>Search</h4></center>
 		<hr>
-	
+		<label>Search<input type="text"></label>
+		
+		
 	</div>
+	
+	
+	
 <div id="wrapper">
-
 <div id="scheduleMaker">
 <center><h4>Availability</center></h4>
 <hr>
