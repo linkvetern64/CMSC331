@@ -17,5 +17,7 @@ $mname = $_SESSION['mname'];
 $lname = $_SESSION['lname'];
 $major = $_SESSION['major'];
 $student_id = $_SESSION['student_id'];
-
+$advisor = $_SESSION['advisor'];
+$advisor_id = $_SESSION['advisor_id'];
+$appt_Key = $_SESSION['appt_Key'];
 ?>
