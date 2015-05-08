@@ -56,7 +56,7 @@ if(isset($_POST['continue']))
     else
     {
        $sql = "SELECT * FROM `appointment_list` WHERE `student_id` = '$id'
-  					      AND `appt_type` = '$appointment'";
+  					      AND (`appt_type` = 'Individual' OR `appt_type` = 'Group')";
 	
        $result = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
@@ -67,8 +67,7 @@ if(isset($_POST['continue']))
 
        if ($error == true)
        {
-	  $type = strtolower($appointment);
-	  $error_msg = "You may not have more than one $type appointment.";
+	  $error_msg = "You already have an appointment scheduled.";
        }
        else
        {  
