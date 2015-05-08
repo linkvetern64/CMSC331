@@ -10,9 +10,10 @@
 //                             - best tool for selecting a date!
 $("#date").datepicker({
    dateFormat: 'yy-mm-dd',
+   defaultDate: '2015-03-02',
    changeMonth: true,
-   minDate: 3,
-   maxDate: '2015-09-09',
+   minDate: '2015-03-02',
+   maxDate: '2015-05-01',
    showButtonPanel: true,
 
    beforeShowDay : function (date)
