@@ -152,7 +152,9 @@ disconnect($conn);
 		<div id="searchWrapper"><input type="text" style="width:50%;margin:4px;" /><input type="image" src="Pictures/search.png" style="width:15px;height:15px;" /> </div>
 		<br><br>
 		<hr>
-		
+		<div id="searchResults">
+			
+		</div>
 	</div>
 	
 	
