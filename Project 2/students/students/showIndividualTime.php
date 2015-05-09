@@ -9,7 +9,7 @@
 //			          - the program shows the available times to sign up for the appointment
 //			   
 //			MAX STUDENTS: at most 1 student for an advisor at a specified time
-//			Times are: 10:00AM, 10:30AM, 11:00AM, 11:30AM, 2:30AM, 3:00AM
+//			Times are: 9:00AM Thru 3:30PM
 //
 //		   after the choice has been made and click continue	=> redirects to confirm.php
 //		   	if the choice field is left blank then error is displayed!
