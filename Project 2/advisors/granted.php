@@ -149,11 +149,13 @@ disconnect($conn);
 	<div id="rightWrap">
 		<center><h4>Search</h4></center>
 		<hr>
-		<div id="searchWrapper"><input type="text" style="width:50%;margin:4px;" /><input type="image" src="Pictures/search.png" style="width:15px;height:15px;" /> </div>
+		<div id="searchWrapper"><input type="text" style="width:50%;margin:4px;" /><input type="image" src="Pictures/search.png" style="width:15px;height:15px;"/> </div>
 		<br><br>
 		<hr>
 		<div id="searchResults">
+		<?php
 			
+		?>
 		</div>
 	</div>
 	
