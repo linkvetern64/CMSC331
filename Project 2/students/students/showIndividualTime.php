@@ -20,6 +20,9 @@
 // File Header!
 //
 //include the webpage header
+include("../../advisors/libs.php");
+include("globals/myFunctions.php");
+
 include("headersFooters/showIndividualTimeHeader.php");
 include("navigation/navigationBar.php");
 
