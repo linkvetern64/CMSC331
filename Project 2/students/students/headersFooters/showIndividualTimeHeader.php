@@ -13,9 +13,6 @@ session_start();
 //include global variables => full name, id, and major
 include('globals/globalVariables.php');
 
-//include global functions
-include('globals/myFunctions.php');
-
 //include common methods to connect to database
 include('CommonMethods.php');
 
@@ -27,8 +24,8 @@ $COMMON = new Common($debug);
 $error = false;
 $error_msg = '';
 
-$time_arr = array('10:00:00','10:30:00','11:00:00','11:30:00','02:30:00','03:00:00');
-$arr_len = 5;
+$time_arr = array('09:00:00','09:30:00','10:00:00','10:30:00','11:00:00','11:30:00','12:00:00','12:30:00','01:00:00','01:30:00','02:00:00','02:30:00','03:00:00','03:30:00');
+$arr_len = 14;
 
 //to show for logged in purpose
  $fname = $_SESSION['fname'];
@@ -36,7 +33,7 @@ $arr_len = 5;
  $lname = $_SESSION['lname'];
  $advisor = $_SESSION['advisor'];
 
-if((!isset($_SESSION['advisor'])) || (!isset($_SESSION['date'])) || (!isset($_SESSION['appointment'])))
+if((!isset($_SESSION['advisor'])) || (!isset($_SESSION['date'])))
 {
    header('Location: index.php');
    die();
@@ -44,8 +41,8 @@ if((!isset($_SESSION['advisor'])) || (!isset($_SESSION['date'])) || (!isset($_SE
 else 
 {
    $advisor = $_SESSION['advisor'];
-   $appointment = $_SESSION['appointment'];
    $date = $_SESSION['date'];
+   
 
    $sql = "SELECT * FROM `appointment_list` WHERE `appt_type` = '$appointment'
                                             AND `advisor` = '$advisor' AND `appt_date` = '$date'";
@@ -65,6 +62,7 @@ if(isset($_POST['continue'])){
      $error = true;
      $error_msg = "Please choose a time.";
   }
+
   else
   {
   	//get the value for the appointment time
@@ -72,6 +70,20 @@ if(isset($_POST['continue'])){
 
   	//set the value for appointment type
   	$_SESSION['time'] = $time;
+
+	//Updates the advisor side Table as appropriate
+	if(createCalendarKey($date,$advisor_id)){
+
+	//Insert Code to create new row in 'Calendar' Table
+	//Default Settings will be a 9-4 shift if Advisor had
+	//Availability for that day
+	
+
+	}
+	else{
+	//Code to update an already existing row in 'Calendar' Table
+	}
+	
 
   	header('Location: confirm.php');
    }
