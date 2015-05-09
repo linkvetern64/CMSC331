@@ -30,7 +30,7 @@ function setTime(&$array, $len, $time)
 
 //formatTime: parameter includes a time variable (format as follows: H:i:S)
 //	      if the time is 12:00:00 then formats it to 12:00 PM
-//	      if the time is 10:00:00 then formats it to 10:00 AM
+//	      if the time is 09:00:00 then formats it to 09:00 AM
 //	      returns the formatted time
 function formatTime($time)
 {
@@ -54,11 +54,27 @@ function formatTime($time)
    {
 	$formatted = $formatted." PM";
    }
+   elseif($formatted == "01:00")
+   {
+	$formatted = $formatted." PM";
+   }
+   elseif($formatted == "01:30")
+   {
+	$formatted = $formatted." PM";
+   }
+   elseif($formatted == "02:00")
+   {
+	$formatted = $formatted." PM";
+   }
    elseif($formatted == "02:30")
    {
 	$formatted = $formatted." PM";
    }
    elseif($formatted == "03:00")
+   {
+	$formatted = $formatted." PM";
+   }
+   elseif($formatted == "03:30")
    {
 	$formatted = $formatted." PM";
    }
@@ -106,7 +122,7 @@ function ifempty(&$array)
   }
 }
 
-//functions
+//
 //availableDate: parameters passed in are day and advisor name
 //		 The function determines the day of the week
 //		 and looks up the advisor ID
@@ -133,6 +149,30 @@ function availableDate($date,$advisor) {
 	$available = $result2[0];
 
 	return $available;	
+}
+
+//
+//calendarKeyExists: parameters passed in are day and advisor name
+//		 The function creates a calendar key if it does not exists
+//		 already. If it does exist, it returns false.
+
+function createCalendarKey($date,$advisor_id){
+	 $appt_Key = $advisor_id."/".$date;
+
+	 $conn = connect();
+	$results = mysql_fetch_array(mysql_query("SELECT `Calendar_Key` FROM `Calendar` WHERE id = $appt_Key"));
+	disconnect($conn);
+
+	 //The logic to create a key if it does NOT exist
+	 if($results[0]){
+	 $_SESSSION['appt_Key'] = $appt_Key;
+	 return 1;
+	 }
+
+	 //The alternative to return that the key already exists
+	 else {
+	 return 0;
+	 }
 }
 
 ?>
