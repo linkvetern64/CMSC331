@@ -10,7 +10,7 @@ session_start();
 require_once("libs.php");
 require_once("getAppointments.php");
 if(!$_SESSION["auth"]){
-	header("Location:../students/index.php");
+	header("Location:../index.php");
 }
 
 $User_ID = $_SESSION["id"];

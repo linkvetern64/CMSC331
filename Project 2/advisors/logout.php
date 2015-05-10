@@ -3,4 +3,4 @@ session_start();
 unset($_SESSION["auth"]);
 unset($_SESSION["id"]);
 session_destroy();
-header("Location:../students/index.php");
+header("Location:../index.php");
