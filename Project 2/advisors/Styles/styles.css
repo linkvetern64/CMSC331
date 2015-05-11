@@ -89,6 +89,13 @@ body
 	margin: 0 auto;
 }
 
+#availabilityWrapper
+{
+	width:100%;
+	height:20px;
+	background-color:inherit;
+}
+
 #calendarTopper
 {
 	width:500px;

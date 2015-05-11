@@ -167,6 +167,7 @@ disconnect($conn);
 <hr>
 <br>
 <form action="calendar.php" method="post">
+<div id="availabilityWrapper">
   <input type="checkbox" name="monday" value="Monday" <?php echo(checkDay("monday")); ?>>Monday 
   <div id="dateRight">
 	  Start: 
@@ -205,7 +206,8 @@ disconnect($conn);
 	  <option value="1600"selected="true">4:00</option>
 	</select>
 </div>
-<br>
+</div>
+<div id="availabilityWrapper">
   <input type="checkbox" name="tuesday" value="Tuesday" <?php echo(checkDay("tuesday")); ?>>Tuesday
   <div id="dateRight">
 	Start: 
@@ -244,7 +246,8 @@ disconnect($conn);
 	  <option value="1600"selected="true">4:00</option>
 	</select>
 </div>
-<br>
+</div>
+<div id="availabilityWrapper">
   <input type="checkbox" name="wednesday" value="Wednesday" <?php echo(checkDay("wednesday")); ?>>Wednesday
   <div id="dateRight">
   Start: 
@@ -281,7 +284,10 @@ disconnect($conn);
 	  <option value="1500">3:00</option>
 	  <option value="1530">3:30</option>
 	  <option value="1600"selected="true">4:00</option>
-</select></div><br>
+</select>
+	</div>
+</div>
+<div id="availabilityWrapper">
   <input type="checkbox" name="thursday" value="Thursday" <?php echo(checkDay("thursday")); ?>>Thursday
   <div id="dateRight">
   Start: 
@@ -318,7 +324,8 @@ disconnect($conn);
 	  <option value="1500">3:00</option>
 	  <option value="1530">3:30</option>
 	  <option value="1600"selected="true">4:00</option>
-</select></div><br>
+</select></div></div>
+<div id="availabilityWrapper">
   <input type="checkbox" name="friday" value="Friday" <?php echo(checkDay("friday")); ?>>Friday 
   <div id="dateRight">
 	  Start: 
@@ -357,9 +364,10 @@ disconnect($conn);
 	  <option value="1600"selected="true">4:00</option>
 	</select>
 </div>
-<br><br>	 
+</div>
+	 
 
-  <input type="submit" value="Update">
+<input type="submit" value="Update" style="margin-top:5px;">
 
 </form>
 </div>
