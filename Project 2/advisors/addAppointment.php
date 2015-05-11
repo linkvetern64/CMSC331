@@ -4,7 +4,7 @@ require_once("libs.php");
 
 $appDate = $_POST["appointmentDate"];
 $appStart = $_POST["appointmentStart"];
-$studentIDs = $_POST["studentIDs"];
+$studentIDs = $_POST["id0"];
 $User_ID = $_SESSION["id"];
 $Calendar_Key = $User_ID . "/" . $appDate;
 
@@ -46,11 +46,16 @@ $answer = $_POST['editing'];
 		$query = "UPDATE  `Calendar` SET  `" . $appStart ."` = CONCAT(  `" . $appStart ."` ,  '" . $studentIDs . "' ) WHERE  `Calendar_Key` =  '" . $Calendar_Key . "'";
 		mysql_query($query);
 	}
-	else {
+	else if($answer == "delete"){
 		$query = "UPDATE  `Calendar` SET  `" . $appStart ."` = NULL WHERE  `Calendar_Key` =  '" . $Calendar_Key . "'";
 		mysql_query($query);
 	}
-	
+	else if($answer == "reschedule"){
+		//Work on reschedule logic
+	}
+	else{
+		//Throw internal error
+	}
 
 	disconnect($conn);
 	header("Location:granted.php");

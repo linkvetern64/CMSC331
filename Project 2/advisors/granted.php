@@ -399,23 +399,24 @@ disconnect($conn);
 		<textarea rows="6" cols="35" name="studentIDs" placeholder="Enter names as comma seperated list..."></textarea>
 		-->
 		<br>
-		<label>ID 0: <input type="text" width="30px"></label><br>
+		<label>ID 0: <input type="text" width="30px" name="id0"></label><br>
 		 <div id="ifChecked" style="display:none">
-		<label>ID 1: <input type="text"></label><br>
-		<label>ID 2: <input type="text"></label><br>
-		<label>ID 3: <input type="text"></label><br>
-		<label>ID 4: <input type="text"></label><br>
-		<label>ID 5: <input type="text"></label><br>
-		<label>ID 6: <input type="text"></label><br>
-		<label>ID 7: <input type="text"></label><br>
-		<label>ID 8: <input type="text"></label><br>
-		<label>ID 9: <input type="text"></label><br>
+		<label>ID 1: <input type="text" name="id1"></label><br>
+		<label>ID 2: <input type="text" name="id2"></label><br>
+		<label>ID 3: <input type="text" name="id3"></label><br>
+		<label>ID 4: <input type="text" name="id4"></label><br>
+		<label>ID 5: <input type="text" name="id5"></label><br>
+		<label>ID 6: <input type="text" name="id6"></label><br>
+		<label>ID 7: <input type="text" name="id7"></label><br>
+		<label>ID 8: <input type="text" name="id8"></label><br>
+		<label>ID 9: <input type="text" name="id9"></label><br>
 		 </div>
 		<br>
 		<input type="submit">
 		<input type="radio" name="editing" value="edit">Edit
 		<input type="radio" name="editing" value="delete">Delete
 		<input type="radio" name="editing" value="add" checked="true">Add
+		<input type="radio" name="editing" value="reschedule">Reschedule
 	</form>
 
 
