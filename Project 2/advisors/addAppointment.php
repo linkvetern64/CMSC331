@@ -4,7 +4,7 @@ require_once("libs.php");
 
 $appDate = $_POST["appointmentDate"];
 $appStart = $_POST["appointmentStart"];
-$studentIDs = $_POST["id0"];
+$studentIDs["0"] = $_POST["id0"];
 $User_ID = $_SESSION["id"];
 $Calendar_Key = $User_ID . "/" . $appDate;
 
@@ -22,6 +22,9 @@ $answer = $_POST['editing'];
 	else{
 		$appStart = substr($appStart,0,1) .':'. substr($appStart,1,2);
 	}
+
+	$Appointment_Key = $Calendar_Key . "/" . $appStart;
+
 	//Check to see if the row exists in the table if it does update it, otherwise insert it
 	$results = mysql_query("SELECT  `" . $appStart ."` 
 	FROM  `Calendar` 
@@ -30,7 +33,12 @@ $answer = $_POST['editing'];
 	$items = mysql_fetch_array($results);
 	//print_r($items);
 	
-	if ($answer == "add") {          
+	if ($answer == "add") {    
+	$queryTwo = "INSERT INTO `Appointments` ( `appointmentKey`, `id0`, 
+	`id1`, `id2`, `id3`, `id4`, `id5`, `id6`, `id7`, `id8`, `id9`) 
+	VALUES ( '" . $Appointment_Key . "' , '" . $studentIDs["0"] . "' ,'SHIT', 'SHIT', 'SHIT', 'SHIT', 'SHIT', 'SHIT', 'SHIT', 'SHIT', 'SHIT')";
+	mysql_query($queryTwo);
+	
 		if(is_null($items[0])){
 		$query = "INSERT INTO  `Calendar` (  `" . $appStart ."`  ,  `id` ,  `Date_ID` , `Calendar_Key` ) 
 		VALUES (
@@ -40,6 +48,7 @@ $answer = $_POST['editing'];
 				
 		mysql_query($query);
 	}    
+	//AdvisorID/Date_Time/Hour:Minutes  Key to appts table
 	}
 	else if($answer == "edit"){
 		
