@@ -5,6 +5,16 @@ require_once("libs.php");
 $appDate = $_POST["appointmentDate"];
 $appStart = $_POST["appointmentStart"];
 $studentIDs["0"] = $_POST["id0"];
+$studentIDs["1"] = $_POST["id1"];
+$studentIDs["2"] = $_POST["id2"];
+$studentIDs["3"] = $_POST["id3"];
+$studentIDs["4"] = $_POST["id4"];
+$studentIDs["5"] = $_POST["id5"];
+$studentIDs["6"] = $_POST["id6"];
+$studentIDs["7"] = $_POST["id7"];
+$studentIDs["8"] = $_POST["id8"];
+$studentIDs["9"] = $_POST["id9"];
+
 $User_ID = $_SESSION["id"];
 $Calendar_Key = $User_ID . "/" . $appDate;
 
@@ -36,7 +46,10 @@ $answer = $_POST['editing'];
 	if ($answer == "add") {    
 	$queryTwo = "INSERT INTO `Appointments` ( `appointmentKey`, `id0`, 
 	`id1`, `id2`, `id3`, `id4`, `id5`, `id6`, `id7`, `id8`, `id9`) 
-	VALUES ( '" . $Appointment_Key . "' , '" . $studentIDs["0"] . "' ,'SHIT', 'SHIT', 'SHIT', 'SHIT', 'SHIT', 'SHIT', 'SHIT', 'SHIT', 'SHIT')";
+	VALUES ( '" . $Appointment_Key . "' , '" . $studentIDs["0"] . "' , '" . $studentIDs["1"] . "'
+	, '" . $studentIDs["2"] . "', '" . $studentIDs["3"] . "', '" . $studentIDs["4"] . "'
+	, '" . $studentIDs["5"] . "', '" . $studentIDs["6"] . "', '" . $studentIDs["7"] . "'
+	, '" . $studentIDs["8"] . "', '" . $studentIDs["9"] . "')";
 	mysql_query($queryTwo);
 	
 		if(is_null($items[0])){
