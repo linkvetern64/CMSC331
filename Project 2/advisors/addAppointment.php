@@ -55,7 +55,7 @@ $answer = $_POST['editing'];
 		if(is_null($items[0])){
 		$query = "INSERT INTO  `Calendar` (  `" . $appStart ."`  ,  `id` ,  `Date_ID` , `Calendar_Key` ) 
 		VALUES (
-				'" . $studentIDs . "', " . $User_ID . ",  '" . $appDate . "',  '" . $Calendar_Key . "'
+				'" . $studentIDs["0"] . "', " . $User_ID . ",  '" . $appDate . "',  '" . $Calendar_Key . "'
 				)
 				ON DUPLICATE KEY UPDATE `" . $appStart . "` = '" . $studentIDs . "'";
 				

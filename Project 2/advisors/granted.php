@@ -449,7 +449,19 @@ disconnect($conn);
 	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getTable($User_ID, $_SESSION["DATE"],"2:30")); ?></div>
 	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getTable($User_ID, $_SESSION["DATE"],"3:00")); ?></div>
 	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getTable($User_ID, $_SESSION["DATE"],"3:30")); ?></div>
-</div>
+		
+		<!-- When you click on the calendar it will populate the roster -->
+		<script>
+			$( ".theme" ).click(function() {
+			  var color = $( this ).css( "background-color" );	
+			  var fontColor = $( this ).css( "color" );
+			  $( 'body' ).css('background', color);
+			  $( 'body'	).css('color', fontColor)
+			});
+			
+		</script>
+	
+	</div>
 <div id="calendarTimes">
 	<div id="timeBlock">9:00</div>
 	<div id="timeBlock">9:30</div>
