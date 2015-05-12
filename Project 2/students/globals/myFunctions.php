@@ -14,6 +14,8 @@
 //	      therefore set the time to NULL ==> 
 //	   otherwise check if it exists in proceeding index
 //	   does not return, but it does change the array elements
+
+
 function setTime(&$array, $len, $time) 
 {
    $counter = $len;
@@ -152,7 +154,7 @@ function availableDate($date,$advisor) {
 }
 
 //
-//calendarKeyExists: parameters passed in are day and advisor name
+//createCalendarKey: parameters passed in are day and advisor name
 //		 The function creates a calendar key if it does not exists
 //		 already. If it does exist, it returns false.
 
@@ -160,16 +162,18 @@ function createCalendarKey($date,$advisor_id){
 	 $appt_Key = $advisor_id."/".$date;
 
 	 $conn = connect();
-	$results = mysql_fetch_array(mysql_query("SELECT `Calendar_Key` FROM `Calendar` WHERE id = $appt_Key"));
+	$results = mysql_fetch_array(mysql_query("SELECT `Calendar_Key` FROM `Calendar` WHERE id = '$advisor_id' AND Date_ID = '$date'"));
 	disconnect($conn);
 
-	 //The logic to create a key if it does NOT exist
+	 //The logic to create a key
+	 $_SESSION['appt_Key'] = $appt_Key;
+	 
+	 //If the object existed, return true
 	 if($results[0]){
-	 $_SESSSION['appt_Key'] = $appt_Key;
 	 return 1;
 	 }
 
-	 //The alternative to return that the key already exists
+	 //The alternative to return that the key did not exist
 	 else {
 	 return 0;
 	 }

@@ -3,6 +3,8 @@
 //start the session
  session_start();
 
+include('../advisors/libs.php');
+
 //include global variables
 include('globals/globalVariables.php');
 
