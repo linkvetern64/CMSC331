@@ -14,9 +14,6 @@
 //	      therefore set the time to NULL ==> 
 //	   otherwise check if it exists in proceeding index
 //	   does not return, but it does change the array elements
-
-include("../advisors/libs.php");
-
 function setTime(&$array, $len, $time) 
 {
    $counter = $len;
@@ -47,7 +44,6 @@ function formatTime($time)
  {
     return NULL;
  }
-
  else
  {
    if($formatted == "12:00")
