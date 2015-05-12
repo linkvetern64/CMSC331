@@ -431,9 +431,10 @@ disconnect($conn);
 </div>
 </div>
 </div>
+
 <div id="calendarWrap">
 <div id="appointmentCalendar">
-<div id="calendarTopper"><h1 style="text-align:center"><?php echo $_SESSION["theDay"]; ?></h1></div>
+<div id="calendarTopper"><h1 style="text-align:center;"><?php echo $_SESSION["theDay"]; ?></h1></div>
 <div id="timeIDBlock">
 	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getTable($User_ID, $_SESSION["DATE"],"9:00")); ?></div>
 	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getTable($User_ID, $_SESSION["DATE"],"9:30")); ?></div>
@@ -449,19 +450,7 @@ disconnect($conn);
 	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getTable($User_ID, $_SESSION["DATE"],"2:30")); ?></div>
 	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getTable($User_ID, $_SESSION["DATE"],"3:00")); ?></div>
 	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getTable($User_ID, $_SESSION["DATE"],"3:30")); ?></div>
-		
-		<!-- When you click on the calendar it will populate the roster -->
-		<script>
-			$( ".theme" ).click(function() {
-			  var color = $( this ).css( "background-color" );	
-			  var fontColor = $( this ).css( "color" );
-			  $( 'body' ).css('background', color);
-			  $( 'body'	).css('color', fontColor)
-			});
-			
-		</script>
-	
-	</div>
+</div>
 <div id="calendarTimes">
 	<div id="timeBlock">9:00</div>
 	<div id="timeBlock">9:30</div>
@@ -479,15 +468,16 @@ disconnect($conn);
 	<div id="timeBlock">3:30</div>
 </div>
 </div>
+
 <div id="calendarBottom">
 <form action="updateDay" method="post">
 <br>
-<label for="appointment">Change Day: </label><input id="appointment" name="dayPicker" type="date" value="<?php echo date('Y-m-d'); ?>"/>
-<input type="submit" value="Update">
+<label for="appointment">Change Day: </label><input id="appointment" name="dayPicker" type="date" value="<?php echo date('Y-m-d'); ?>"/> 
+<input type="submit" value="Update"></input>
 </form>
-<style="text-align:right;">[<a href="print.php">print</a>]</style>
+<style="text-align:right;">[<a href="print.php">prints</a>]</style>
 </div>
 </div>
-</div>
+</div></div>
 </body>
 </html>

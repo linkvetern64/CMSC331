@@ -57,7 +57,7 @@ $answer = $_POST['editing'];
 		VALUES (
 				'" . $studentIDs["0"] . "', " . $User_ID . ",  '" . $appDate . "',  '" . $Calendar_Key . "'
 				)
-				ON DUPLICATE KEY UPDATE `" . $appStart . "` = '" . $studentIDs . "'";
+				ON DUPLICATE KEY UPDATE `" . $appStart . "` = '" . $studentIDs["0"] . "'";
 				
 		mysql_query($query);
 	}    
