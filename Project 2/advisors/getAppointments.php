@@ -20,12 +20,14 @@ function getAppointments($User_ID, $date, $time){
 	$conn = connect();
 	$key = $User_ID . "/" . $date . "/" . $time;
 	$query = mysql_query("SELECT * FROM `Appointments` WHERE appointmentKey = '" . $key . "'"); 
-	$results = mysql_fetch_array($query);
-	print_r($results);
-	while($row = mysql_fetch_array($query)){
-		//echo($row);
+	$rows = mysql_fetch_assoc($query);
+	
+	for($i = 0; $i < 10; $i++){
+		if($rows["id" . $i] != ""){
+			echo($rows["id" . $i] . ", ");
+		}
+		if($i == 4){
+			echo("<br>");
+		}
 	}
-	
-	return $results;
-	
 }

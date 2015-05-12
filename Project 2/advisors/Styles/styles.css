@@ -64,7 +64,7 @@ body
 #calendarWrap
 {
     
-	height:475px;
+	height:500px;
 	width:500px;
 	outline: black solid thin;
 	background-color:#FFFDD0;
@@ -112,7 +112,7 @@ body
 #timeBlock
 {
 	outline:#000000 solid thin;
-	height:27.11px;
+	height:34px;
 	width:100px;
 	text-align:center;
 	 
@@ -143,7 +143,7 @@ body
 #timeIDBlocks
 {
 	outline:#000000 solid thin;
-	height:7.14%;
+	height:32px;
 	width:100%;
 	text-align:left;
 }

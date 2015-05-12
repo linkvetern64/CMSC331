@@ -437,20 +437,20 @@ disconnect($conn);
 <div id="appointmentCalendar">
 <div id="calendarTopper"><h1 style="text-align:center;"><?php echo $_SESSION["theDay"]; ?></h1></div>
 <div id="timeIDBlock">
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"9:00")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"9:30")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"10:00")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"10:30")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"11:00")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"11:30")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"12:00")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"12:30")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"1:00")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"1:30")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"2:00")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"2:30")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"3:00")); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"3:30")); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"9:00"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"9:30"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"10:00"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"10:30"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"11:00"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"11:30"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"12:00"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"12:30"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"1:00"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"1:30"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"2:00"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"2:30"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"3:00"); ?></div>
+	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"3:30"); ?></div>
 </div>
 <div id="calendarTimes">
 	<div id="timeBlock">9:00</div>
