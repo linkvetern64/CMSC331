@@ -408,17 +408,68 @@ disconnect($conn);
 		<textarea rows="6" cols="35" name="studentIDs" placeholder="Enter names as comma seperated list..."></textarea>
 		-->
 		<br>
-		<label>ID 0: <input type="text" width="30px" name="id0"></label><br>
+		<label>ID 0: <select name="major">
+				<option value="Computer Science">Comp Sci</option>
+				<option value="Computer Eng">Comp E</option>
+				<option value="Chemical Eng">Chem E</option>
+				<option value="Mechanical Eng">Mech E</option>
+			</select><input type="text" width="30px" name="id0"></label><input type="checkbox" name="id0Check" value="id0Check"><br>
 		 <div id="ifChecked" style="display:none">
-		<label>ID 1: <input type="text" name="id1"></label><br>
-		<label>ID 2: <input type="text" name="id2"></label><br>
-		<label>ID 3: <input type="text" name="id3"></label><br>
-		<label>ID 4: <input type="text" name="id4"></label><br>
-		<label>ID 5: <input type="text" name="id5"></label><br>
-		<label>ID 6: <input type="text" name="id6"></label><br>
-		<label>ID 7: <input type="text" name="id7"></label><br>
-		<label>ID 8: <input type="text" name="id8"></label><br>
-		<label>ID 9: <input type="text" name="id9"></label><br>
+		<label>ID 1: <select name="major">
+				<option value="Computer Science">Comp Sci</option>
+				<option value="Computer Eng">Comp E</option>
+				<option value="Chemical Eng">Chem E</option>
+				<option value="Mechanical Eng">Mech E</option>
+			</select><input type="text" name="id1"></label><input type="checkbox" name="id0Check" value="id0Check"><br>
+		
+		<label>ID 2: <select name="major">
+				<option value="Computer Science">Comp Sci</option>
+				<option value="Computer Eng">Comp E</option>
+				<option value="Chemical Eng">Chem E</option>
+				<option value="Mechanical Eng">Mech E</option>
+			</select><input type="text" name="id2"></label><input type="checkbox" name="id0Check" value="id0Check"><br>
+		<label>ID 3: <select name="major">
+				<option value="Computer Science">Comp Sci</option>
+				<option value="Computer Eng">Comp E</option>
+				<option value="Chemical Eng">Chem E</option>
+				<option value="Mechanical Eng">Mech E</option>
+			</select><input type="text" name="id3"></label><input type="checkbox" name="id0Check" value="id0Check"><br>
+		<label>ID 4: <select name="major">
+				<option value="Computer Science">Comp Sci</option>
+				<option value="Computer Eng">Comp E</option>
+				<option value="Chemical Eng">Chem E</option>
+				<option value="Mechanical Eng">Mech E</option>
+			</select><input type="text" name="id4"></label><input type="checkbox" name="id0Check" value="id0Check"><br>
+		<label>ID 5: <select name="major">
+				<option value="Computer Science">Comp Sci</option>
+				<option value="Computer Eng">Comp E</option>
+				<option value="Chemical Eng">Chem E</option>
+				<option value="Mechanical Eng">Mech E</option>
+			</select><input type="text" name="id5"></label><input type="checkbox" name="id0Check" value="id0Check"><br>
+		<label>ID 6: <select name="major">
+				<option value="Computer Science">Comp Sci</option>
+				<option value="Computer Eng">Comp E</option>
+				<option value="Chemical Eng">Chem E</option>
+				<option value="Mechanical Eng">Mech E</option>
+			</select><input type="text" name="id6"></label><input type="checkbox" name="id0Check" value="id0Check"><br>
+		<label>ID 7: <select name="major">
+				<option value="Computer Science">Comp Sci</option>
+				<option value="Computer Eng">Comp E</option>
+				<option value="Chemical Eng">Chem E</option>
+				<option value="Mechanical Eng">Mech E</option>
+			</select><input type="text" name="id7"></label><input type="checkbox" name="id0Check" value="id0Check"><br>
+		<label>ID 8: <select name="major">
+				<option value="Computer Science">Comp Sci</option>
+				<option value="Computer Eng">Comp E</option>
+				<option value="Chemical Eng">Chem E</option>
+				<option value="Mechanical Eng">Mech E</option>
+			</select><input type="text" name="id8"></label><input type="checkbox" name="id0Check" value="id0Check"><br>
+		<label>ID 9: <select name="major">
+				<option value="Computer Science">Comp Sci</option>
+				<option value="Computer Eng">Comp E</option>
+				<option value="Chemical Eng">Chem E</option>
+				<option value="Mechanical Eng">Mech E</option>
+			</select><input type="text" name="id9"></label><input type="checkbox" name="id0Check" value="id0Check"><br>
 		 </div>
 		<br>
 		<input type="submit">
@@ -437,20 +488,20 @@ disconnect($conn);
 <div id="appointmentCalendar">
 <div id="calendarTopper"><h1 style="text-align:center;"><?php echo $_SESSION["theDay"]; ?></h1></div>
 <div id="timeIDBlock">
-	<div id="timeWrap"><div id="hours">9:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"9:00"); ?></div></div>
-	<div id="timeWrap"><div id="hours">9:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"9:30"); ?></div></div>
-	<div id="timeWrap"><div id="hours">10:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"10:00"); ?></div></div>
-	<div id="timeWrap"><div id="hours">10:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"10:30"); ?></div></div>
-	<div id="timeWrap"><div id="hours">11:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"11:00"); ?></div></div>
-	<div id="timeWrap"><div id="hours">11:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"11:30"); ?></div></div>
-	<div id="timeWrap"><div id="hours">12:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"12:00"); ?></div></div>
-	<div id="timeWrap"><div id="hours">12:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"12:30"); ?></div></div>
-	<div id="timeWrap"><div id="hours">1:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"1:00"); ?></div></div>
-	<div id="timeWrap"><div id="hours">1:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"1:30"); ?></div></div>
-	<div id="timeWrap"><div id="hours">2:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"2:00"); ?></div></div>
-	<div id="timeWrap"><div id="hours">2:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"2:30"); ?></div></div>
-	<div id="timeWrap"><div id="hours">3:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"3:00"); ?></div></div>
-	<div id="timeWrap"><div id="hours">3:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"3:30"); ?></div></div>
+	<div id="timeWrap"><div id="hours">9:00</div><div id="idInfo"><?php echo(getAppointments($User_ID, $_SESSION["DATE"],"9:00")); ?></div></div>
+	<div id="timeWrap"><div id="hours">9:30</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"9:30")); ?></div></div>
+	<div id="timeWrap"><div id="hours">10:00</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"10:00")); ?></div></div>
+	<div id="timeWrap"><div id="hours">10:30</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"10:30")); ?></div></div>
+	<div id="timeWrap"><div id="hours">11:00</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"11:00")); ?></div></div>
+	<div id="timeWrap"><div id="hours">11:30</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"11:30")); ?></div></div>
+	<div id="timeWrap"><div id="hours">12:00</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"12:00")); ?></div></div>
+	<div id="timeWrap"><div id="hours">12:30</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"12:30")); ?></div></div>
+	<div id="timeWrap"><div id="hours">1:00</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"1:00")); ?></div></div>
+	<div id="timeWrap"><div id="hours">1:30</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"1:30")); ?></div></div>
+	<div id="timeWrap"><div id="hours">2:00</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"2:00")); ?></div></div>
+	<div id="timeWrap"><div id="hours">2:30</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"2:30")); ?></div></div>
+	<div id="timeWrap"><div id="hours">3:00</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"3:00")); ?></div></div>
+	<div id="timeWrap"><div id="hours">3:30</div><div id="idInfo"><?php  echo(getAppointments($User_ID, $_SESSION["DATE"],"3:30")); ?></div></div>
 	 
 </div>
 

@@ -40,7 +40,8 @@ $answer = $_POST['editing'];
 	FROM  `Calendar` 
 	WHERE id = " . $User_ID . "
 	AND Date_ID =  '" . $appDate . "'");
-	$items = mysql_fetch_array($results);
+    $items = mysql_fetch_array($results);
+	
 	//print_r($items);
 	
 	if ($answer == "add") {    
