@@ -30,6 +30,26 @@ function setTime(&$array, $len, $time)
    }
 }
 
+//majorTime: parameters include a time array, its length, and start/end time variables 
+//	   if the time variable is outside the range, then the advisors
+//	      have listed that time as unavailable to the major
+//	      therefore set the time to NULL ==> 
+
+
+function majorTime(&$array, $len, $time1, $time2) 
+{
+   $counter = $len;
+
+   while($counter >= 0)
+   {
+	if($array[$counter] > $time1 && $array[$counter] < $time2)
+	{
+	    $array[$counter] = NULL;
+	}
+	$counter = $counter - 1;
+   }
+}
+
 //formatTime: parameter includes a time variable (format as follows: H:i:S)
 //	      if the time is 12:00:00 then formats it to 12:00 PM
 //	      if the time is 09:00:00 then formats it to 09:00 AM

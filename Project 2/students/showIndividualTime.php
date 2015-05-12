@@ -37,9 +37,19 @@ $sql = "SELECT * FROM `appointments` WHERE `appt_type` = '$appt_type'
 	
 $result = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
+
+	//Code to determine if the major has any limitations
+	$conn = connect();
+	$results = mysql_fetch_array(mysql_query("SELECT `firstAppt`,`lastAppt` FROM `Majors` WHERE `Name` = '$major' AND `id` = '$advisor_id'"));
+	$majStart = $results[0];
+	$majEnd = $results[1];
+	disconnect($conn);
+
+
 while($row = mysql_fetch_array($result))
 {
    setTime($time_arr, $arr_len, $row['appt_time']);
+   majorTime($time_arr,$arr_len, $majStart, $majEnd);
 }
 
 
@@ -59,18 +69,8 @@ if(isset($_POST['continue'])){
   	//set the value for appointment type
   	$_SESSION['appt_time'] = $time;
 
-	//Updates the advisor side Table as appropriate
-	if(createCalendarKey($appt_date,$advisor_id)){
-
-	//Insert Code to create new row in 'Calendar' Table
-	//Default Settings will be a 9-4 shift if Advisor had
-	//Availability for that day
-	
-
-	}
-	else{
-	//Code to update an already existing row in 'Calendar' Table
-	}
+	//Generates Calendar Key
+	createCalendarKey($appt_date,$advisor_id);
 	
 	if($_SESSION['reschedule'] == true)
         {
