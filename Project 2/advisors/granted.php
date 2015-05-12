@@ -7,6 +7,7 @@
 	*file: index.php
 	*/
 session_start();
+include("search.php");
 require_once("libs.php");
 require_once("getAppointments.php");
 if(!$_SESSION["auth"]){
@@ -155,7 +156,7 @@ disconnect($conn);
 		<hr>
 		<div id="searchResults">
 		<?php
-			
+			echo(searchAppointments("EY64938"));
 		?>
 		</div>
 	</div>
