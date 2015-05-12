@@ -10,6 +10,8 @@
 //start the session
 session_start();
 
+include('../advisors/libs.php');
+
 //include global variables => full name, id, and major
 include('globals/globalVariables.php');
 
@@ -42,6 +44,37 @@ if(isset($_POST['confirm']))
 
 
    $result = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+
+   //Code to update the advisor side DBs
+
+   //First, check if the calendar key already exists. If it does not, create it
+   //and insert new row into the calendar table
+   if(!createCalendarKey($appt_date,$advisor_id)) {
+   	//Create boolean for group appointment
+	if($appt_type == "Group"){
+		$Group = 1;	
+	}
+	else{
+		$Group = 0;
+	}
+
+	//Connect to advisor DB
+   	$conn = connect();
+
+	//Create the new row
+	mysql_query("INSERT INTO `jstand1`.`Calendar` (`id`,`Date_ID`,`Calendar_Key`,`isGroup`)
+			    VALUES ('$advisor_id','$appt_date','$appt_Key','$Group')");
+	disconnect($conn);
+
+   }
+
+   //Now that the appointment row already exists, simply update the existing row
+   $tempAppt_time = ltrim (substr($appt_time,0,5), '0');
+ 
+   $conn = connect();
+   mysql_query("UPDATE `Calendar` SET `$tempAppt_time` = '$student_id' WHERE `Calendar_Key` = '$appt_Key'");
+   disconnect($conn);
+
 	   
    header('Location: ThankYou.php');
  

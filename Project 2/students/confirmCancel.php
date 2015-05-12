@@ -3,6 +3,8 @@
 //start the session
  session_start();
 
+include('../advisors/libs.php');
+
 //include global variables
 include('globals/globalVariables.php');
 
@@ -70,6 +72,24 @@ if(isset($_POST['confirm']))
 
         $counter = $counter + 1; 
    }
+
+   //Code to delete the data from the advisor DB
+   
+   $conn = connect();
+
+   //Determine advisor id
+   $advisorName = explode(" ", $adviser);
+   $results = mysql_fetch_array(mysql_query("SELECT `id` FROM `Advisors` WHERE firstName = '$advisorName[0]' AND lastName = '$advisorName[1]'"));
+   $advisor_id = $results[0];
+
+   $results1 = mysql_fetch_array(mysql_query("SELECT `Calendar_Key` FROM `Calendar` WHERE id = '$advisor_id' AND Date_ID = '$dt'"));
+   $appt_Key = $results1[0];
+
+   //Match Time Column label
+   $tempAppt_time = ltrim (substr($t,0,5), '0');
+    //Update entry with "NULL"
+   mysql_query("UPDATE `Calendar` SET `$tempAppt_time` = 'NULL' WHERE `Calendar_Key` = '$appt_Key'");
+   disconnect($conn);
  
    header('Location: deletedAppointment.php');
 
