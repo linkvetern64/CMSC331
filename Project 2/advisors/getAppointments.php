@@ -14,3 +14,18 @@ function getTable($User_ID, $time, $index){
 	 
 	return $results[$index];
 }
+
+function getAppointments($User_ID, $date, $time){
+	
+	$conn = connect();
+	$key = $User_ID . "/" . $date . "/" . $time;
+	$query = mysql_query("SELECT * FROM `Appointments` WHERE appointmentKey = '" . $key . "'"); 
+	$results = mysql_fetch_array($query);
+	print_r($results);
+	while($row = mysql_fetch_array($query)){
+		//echo($row);
+	}
+	
+	return $results;
+	
+}
