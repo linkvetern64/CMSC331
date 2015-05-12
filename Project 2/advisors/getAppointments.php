@@ -24,7 +24,8 @@ function getAppointments($User_ID, $date, $time){
 	
 	for($i = 0; $i < 10; $i++){
 		if($rows["id" . $i] != ""){
-			echo($rows["id" . $i] . ", ");
+			echo($rows["id" . $i]);
+			echo(", ");
 		}
 		if($i == 4){
 			echo("<br>");

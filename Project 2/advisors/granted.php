@@ -437,37 +437,23 @@ disconnect($conn);
 <div id="appointmentCalendar">
 <div id="calendarTopper"><h1 style="text-align:center;"><?php echo $_SESSION["theDay"]; ?></h1></div>
 <div id="timeIDBlock">
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"9:00"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"9:30"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"10:00"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"10:30"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"11:00"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"11:30"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"12:00"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"12:30"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"1:00"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"1:30"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"2:00"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"2:30"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"3:00"); ?></div>
-	<div id="timeIDBlocks"><div id="pad"></div><?php getAppointments($User_ID, $_SESSION["DATE"],"3:30"); ?></div>
+	<div id="timeWrap"><div id="hours">9:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"9:00"); ?></div></div>
+	<div id="timeWrap"><div id="hours">9:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"9:30"); ?></div></div>
+	<div id="timeWrap"><div id="hours">10:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"10:00"); ?></div></div>
+	<div id="timeWrap"><div id="hours">10:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"10:30"); ?></div></div>
+	<div id="timeWrap"><div id="hours">11:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"11:00"); ?></div></div>
+	<div id="timeWrap"><div id="hours">11:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"11:30"); ?></div></div>
+	<div id="timeWrap"><div id="hours">12:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"12:00"); ?></div></div>
+	<div id="timeWrap"><div id="hours">12:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"12:30"); ?></div></div>
+	<div id="timeWrap"><div id="hours">1:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"1:00"); ?></div></div>
+	<div id="timeWrap"><div id="hours">1:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"1:30"); ?></div></div>
+	<div id="timeWrap"><div id="hours">2:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"2:00"); ?></div></div>
+	<div id="timeWrap"><div id="hours">2:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"2:30"); ?></div></div>
+	<div id="timeWrap"><div id="hours">3:00</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"3:00"); ?></div></div>
+	<div id="timeWrap"><div id="hours">3:30</div><div id="idInfo"><?php getAppointments($User_ID, $_SESSION["DATE"],"3:30"); ?></div></div>
+	 
 </div>
-<div id="calendarTimes">
-	<div id="timeBlock">9:00</div>
-	<div id="timeBlock">9:30</div>
-	<div id="timeBlock">10:00</div>
-	<div id="timeBlock">10:30</div>
-	<div id="timeBlock">11:00</div>
-	<div id="timeBlock">11:30</div>
-	<div id="timeBlock">12:00</div>
-	<div id="timeBlock">12:30</div>
-	<div id="timeBlock">1:00</div>
-	<div id="timeBlock">1:30</div>
-	<div id="timeBlock">2:00</div>
-	<div id="timeBlock">2:30</div>
-	<div id="timeBlock">3:00</div>
-	<div id="timeBlock">3:30</div>
-</div>
+
 </div>
 
 <div id="calendarBottom">
@@ -479,6 +465,7 @@ disconnect($conn);
 <style="text-align:right;">[<a href="print.php">prints</a>]</style>
 </div>
 </div>
+
 </div></div>
   
 </body>
