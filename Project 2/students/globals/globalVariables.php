@@ -23,5 +23,6 @@ $previous_appt = $_SESSION['previous_appt'];
 $appt_type = $_SESSION['appt_type'];
 $appt_date = $_SESSION['appt_date'];
 $appt_time = $_SESSION['appt_time'];
+$appt_Key = $_SESSION['appt_Key'];
 $day = $_SESSION['day'];
 ?>
