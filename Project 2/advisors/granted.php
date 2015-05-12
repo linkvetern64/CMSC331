@@ -88,6 +88,7 @@ disconnect($conn);
 		$.get("email.php");
 		return false;
 	}
+	
 	</script>
 	<style>
  
@@ -479,5 +480,6 @@ disconnect($conn);
 </div>
 </div>
 </div></div>
+  
 </body>
 </html>
