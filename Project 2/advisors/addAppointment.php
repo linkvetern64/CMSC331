@@ -70,8 +70,10 @@ $answer = $_POST['editing'];
 		mysql_query($query);
 	}
 	else if($answer == "delete"){
-		$query = "UPDATE  `Calendar` SET  `" . $appStart ."` = NULL WHERE  `Calendar_Key` =  '" . $Calendar_Key . "'";
+		$query = "DELETE FROM `Appointments` WHERE `appointmentKey` = '" . $Appointment_Key  ."'";
 		mysql_query($query);
+		$query2 = "UPDATE  `Calendar` SET  `" . $appStart ."` = NULL WHERE  `Calendar_Key` =  '" . $Calendar_Key . "'";
+		mysql_query($query2);
 	}
 	else if($answer == "reschedule"){
 		//Work on reschedule logic

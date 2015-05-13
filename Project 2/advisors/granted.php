@@ -7,7 +7,7 @@
 	*file: index.php
 	*/
 session_start();
-include("search.php");
+
 require_once("libs.php");
 require_once("getAppointments.php");
 if(!$_SESSION["auth"]){
@@ -151,13 +151,26 @@ disconnect($conn);
 	<div id="rightWrap">
 		<center><h4>Search</h4></center>
 		<hr>
-		<div id="searchWrapper"><input type="text" style="width:50%;margin:4px;" /><input type="image" src="Pictures/search.png" style="width:15px;height:15px;"/> </div>
+		<form action="search.php">
+		<div id="searchWrapper"><input type="text" style="width:50%;margin:4px;" id="idSearch" /><input type="image" action="search.php" src="Pictures/search.png" style="width:15px;height:15px;"/> </div>
+		</form>
 		<br><br>
 		<hr>
 		<div id="searchResults">
-		<?php
-			echo(searchAppointments("EY64938"));
-		?>
+		<script type="text/javascript">
+		   $(document).ready(function() {
+			var search = $("#idSearch");
+			search.keyup(function() {
+				if (search.val() != '') {
+					$(".result").ajax({ url: 'search.php?' });
+					
+					}
+				});   
+			});
+			
+		
+		</script>
+		<div class="result"></div>
 		</div>
 	</div>
 	
