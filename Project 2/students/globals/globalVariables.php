@@ -23,6 +23,8 @@ $previous_appt = $_SESSION['previous_appt'];
 $appt_type = $_SESSION['appt_type'];
 $appt_date = $_SESSION['appt_date'];
 $appt_time = $_SESSION['appt_time'];
-$appt_Key = $_SESSION['appt_Key'];
+$appt_key = $_SESSION['appt_key'];
+$calendar_key = $advisor_id."/".$appt_date;
+$newTime = $_SESSION['newTime'];
 $day = $_SESSION['day'];
 ?>

@@ -3,8 +3,6 @@
 //start the session
  session_start();
 
-include('../advisors/libs.php');
-
 //include global variables
 include('globals/globalVariables.php');
 
@@ -57,7 +55,8 @@ elseif(isset($_POST['go_back']))
 <html>
 <head>
    <title>Academic Advising Appointment</title>
-   <link rel="icon" type="image/png" href="images//icon.png" />
+   <link rel="shortcut icon" href="Pictures/favicon.ico" />
+   <link rel="icon" type="image/png" href="images/icon.png" />
    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 
    <link rel="stylesheet" type="text/css" href="css/mystyle.css">

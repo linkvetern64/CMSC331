@@ -10,8 +10,6 @@
 //start the session
 session_start();
 
-include('../advisors/libs.php');
-
 //include global variables => full name, id, and major
 include('globals/globalVariables.php');
 
@@ -30,6 +28,38 @@ if(!$_SESSION["auth"])
     header('Location:../index.php');
 }
 
+	$newGroupId = 0;
+
+        //connect to advisor's DB
+        $conn = connect();
+
+	$appt_key = setApptKey($advisor_id, $appt_date, $appt_time);
+
+        $result = mysql_fetch_array(mysql_query("SELECT * FROM `Appointments` WHERE `appointmentKey` = '$appt_key'"));
+
+	$group_result = mysql_fetch_array(mysql_query("SELECT * FROM `Calendar` WHERE `Calendar_Key` = '$calendar_key'"));
+	
+	if(empty($group_result))
+	{
+	    $newGroupId = 1;
+	}
+	
+	$counter = 0;
+
+	while($counter < 10)
+	{
+	   if($result[$counter] == NULL)
+	   {
+		break;
+	   }
+	   $counter++;
+	}
+
+	$id = "id".$counter;
+
+        disconnect($conn);
+
+
 if(isset($_POST['confirm']))
 {
 
@@ -47,38 +77,75 @@ if(isset($_POST['confirm']))
 
    //Code to update the advisor side DBs
 
-   //First, check if the calendar key already exists. If it does not, create it
-   //and insert new row into the calendar table
-   if(!createCalendarKey($appt_date,$advisor_id)) {
-   	//Create boolean for group appointment
-	if($appt_type == "Group"){
-		$Group = 1;	
+   //set the appointmentKey first
+   $appt_key = setApptKey($advisor_id, $appt_date, $appt_time);
+   $_SESSION['appt_key'] = $appt_key;
+  
+
+   if($appt_type == "Group")
+   {
+	$Group = 1;
+
+        //connect to advisor's DB
+        $conn = connect();
+
+        if($id == "id0")
+	{
+           //add the student id and appointmentKey for appointment to advisor's end
+           mysql_query("INSERT INTO `Appointments` (`id0`,`appointmentKey`)
+	   		       VALUES ('$student_id', '$appt_key')");
 	}
-	else{
-		$Group = 0;
+	else
+	{
+	   mysql_query("UPDATE `Appointments` SET `".$id."` = '$student_id' WHERE `appointmentKey` = '$appt_key'");
 	}
 
-	//Connect to advisor DB
-   	$conn = connect();
-
-	//Create the new row
-	mysql_query("INSERT INTO `jstand1`.`Calendar` (`id`,`Date_ID`,`Calendar_Key`,`isGroup`)
-			    VALUES ('$advisor_id','$appt_date','$appt_Key','$Group')");
-	disconnect($conn);
-
+	if($newGroupId == 1)
+	{
+	   //add to calendar since it doesn't exist
+	   mysql_query("INSERT INTO `Calendar` (`".$newTime."`, `id`, `Date_ID`, `Calendar_Key`, `isGroup`)
+				VALUES ('$appt_key', '$advisor_id', '$appt_date', '$calendar_key', '$Group')");
+	}
+	else
+	{
+	   mysql_query("UPDATE `Calendar` SET `".$newTime."` = '$appt_key' WHERE `Calendar_Key` = '$calendar_key'");
+	}
+   
+        //disconnect
+        disconnect($conn);
+	
    }
+   else
+   {
+	$Group = 0;
 
-   //Now that the appointment row already exists, simply update the existing row
-   $tempAppt_time = ltrim (substr($appt_time,0,5), '0');
- 
-   $conn = connect();
-   mysql_query("UPDATE `Calendar` SET `$tempAppt_time` = '$student_id' WHERE `Calendar_Key` = '$appt_Key'");
-   disconnect($conn);
+        //connect to advisor's DB
+        $conn = connect();
 
-	   
+        //add the student id and appointmentKey for appointment to advisor's end
+        mysql_query("INSERT INTO `Appointments` (`id0`,`appointmentKey`)
+	   		       VALUES ('$student_id', '$appt_key')");
+
+	if($newGroupId == 1)
+	{
+	   //add to calendar since it doesn't exist
+	   mysql_query("INSERT INTO `Calendar` (`".$newTime."`, `id`, `Date_ID`, `Calendar_Key`, `isGroup`)
+				VALUES ('$appt_key', '$advisor_id', '$appt_date', '$calendar_key', '$Group')");
+	}
+	else
+	{
+	   mysql_query("UPDATE `Calendar` SET `".$newTime."` = '$appt_key' WHERE `Calendar_Key` = '$calendar_key'");
+	}
+   
+        //disconnect
+        disconnect($conn);
+	
+   }
+   
    header('Location: ThankYou.php');
  
 }
+	   
 elseif(isset($_POST['go_back']))
 {
 	if($appt_type == "Group")
@@ -97,7 +164,8 @@ elseif(isset($_POST['go_back']))
 <html>
 <head>
    <title>Academic Advising Appointment</title>
-   <link rel="icon" type="image/png" href="images//icon.png" />
+   <link rel="shortcut icon" href="Pictures/favicon.ico" />
+   <link rel="icon" type="image/png" href="images/icon.png" />
    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 </head>
  

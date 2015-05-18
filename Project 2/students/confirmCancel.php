@@ -3,8 +3,6 @@
 //start the session
  session_start();
 
-include('../advisors/libs.php');
-
 //include global variables
 include('globals/globalVariables.php');
 
@@ -38,7 +36,7 @@ if(isset($_POST['confirm']))
 {
    $counter = 0;
 
-   while($row = mysql_fetch_array($result)) 
+   while($row = mysql_fetch_array($result))
    {
 	$len = sizeof($tags_arr);
 	$len = $len - 1;
@@ -51,6 +49,40 @@ if(isset($_POST['confirm']))
      	     $apt = $row['appt_type'];
     	     $dt = $row['appt_date'];
      	     $t = $row['appt_time'];
+
+	     //to determine advisor_id
+	     $conn = connect();
+		 
+	     //Gathers the private key to validate the login user
+	     $advisorName = explode(" ",$adviser);
+	     $result1 = mysql_fetch_array(mysql_query("SELECT `id` FROM `Advisors` WHERE `firstName` = '$advisorName[0]' AND `lastName` = '$advisorName[1]'"));
+
+      	     //disconnect
+             disconnect($conn);
+
+	     $advisor_id = $result1[0];
+
+
+	     $appt_key = setApptKey($advisor_id, $dt, $t);
+	     $calendar_key = $advisor_id."/".$dt;
+
+	     $isGroup = 0;
+
+   		$t_arr = explode(":", $t);
+   		$hour = $t_arr[0];
+   		$minutes = $t_arr[1];
+
+   		if($hour < 10)
+   		{
+			$hour = substr($hour, 1, 4);
+   		}
+ 
+   		$newTime = $hour. ":". $minutes;
+
+	     if($apt == "Group")
+	     {
+		$isGroup = 1;
+	     }
 
 	     $q = "DELETE FROM `appointments` WHERE `student_id` = '$student_id'
 						    AND `advisor` = '$adviser'
@@ -65,31 +97,52 @@ if(isset($_POST['confirm']))
 
 	     $rs = $COMMON->executeQuery($q, $_SERVER["SCRIPT_NAME"]);
 
-	  }
 
+	     if(isGroup == 1)
+	     {
+        	//connect to advisor's DB
+        	$conn = connect();
+
+        	$result = mysql_fetch_array(mysql_query("SELECT * FROM `Appointments` WHERE `appointmentKey` = '$appt_key'"));
+
+		$counter = 0;
+
+		while($counter < 10)
+		{
+			if($result[$counter] == $student_id)
+			{
+				$id = "id".$counter;
+
+				//set the student_id to NULL
+	   			mysql_query("UPDATE `Appointments` SET `".$id."` = NULL WHERE `appointmentKey` = '$appt_key'");
+			}
+			$counter++;
+		}	
+      		//disconnect
+        	disconnect($conn);
+	     }
+
+	     else
+	     {
+        	//connect to advisor's DB
+        	$conn = connect();
+
+		//delete it
+	   	mysql_query("DELETE FROM `Appointments` WHERE `appointmentKey` = '$appt_key'");
+
+		//update the calendar field to NULL
+	   	mysql_query("UPDATE `Calendar` SET `".$newTime."` = NULL WHERE `Calendar_Key` = '$calendar_key'");
+   
+      		//disconnect
+        	disconnect($conn);
+	     }
+	
+	  }
           $len = $len - 1; 
         }
 
         $counter = $counter + 1; 
    }
-
-   //Code to delete the data from the advisor DB
-   
-   $conn = connect();
-
-   //Determine advisor id
-   $advisorName = explode(" ", $adviser);
-   $results = mysql_fetch_array(mysql_query("SELECT `id` FROM `Advisors` WHERE firstName = '$advisorName[0]' AND lastName = '$advisorName[1]'"));
-   $advisor_id = $results[0];
-
-   $results1 = mysql_fetch_array(mysql_query("SELECT `Calendar_Key` FROM `Calendar` WHERE id = '$advisor_id' AND Date_ID = '$dt'"));
-   $appt_Key = $results1[0];
-
-   //Match Time Column label
-   $tempAppt_time = ltrim (substr($t,0,5), '0');
-    //Update entry with "NULL"
-   mysql_query("UPDATE `Calendar` SET `$tempAppt_time` = 'NULL' WHERE `Calendar_Key` = '$appt_Key'");
-   disconnect($conn);
  
    header('Location: deletedAppointment.php');
 
@@ -106,7 +159,8 @@ elseif(isset($_POST['go_back']))
 <html>
 <head>
    <title>Academic Advising Appointment</title>
-   <link rel="icon" type="image/png" href="images//icon.png" />
+   <link rel="shortcut icon" href="Pictures/favicon.ico" />
+   <link rel="icon" type="image/png" href="images/icon.png" />
    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 </head>
  

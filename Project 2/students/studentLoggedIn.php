@@ -49,7 +49,8 @@ if(isset($_POST['continue']))
 <html>
 <head>
    <title>Academic Advising Appointment</title>
-   <link rel="icon" type="image/png" href="images//icon.png" />
+   <link rel="shortcut icon" href="Pictures/favicon.ico" />
+   <link rel="icon" type="image/png" href="images/icon.png" />
    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 </head>
  
@@ -87,6 +88,8 @@ if(isset($_POST['continue']))
 				  <?php if($previous_appt == true) { ?>
 					<input type="radio" name="appointment" value="Cancel">Cancel an appointment</input><br>
 					<input type="radio" name="appointment" value="Reschedule">Reschedule an appointment</input><br>
+				  <?php } elseif ($major == "Engineering Majors") { ?>
+				  	<input type="radio" name="appointment" value="Group">Make a group appointment</input><br>
 				  <?php } else { ?>
 				  	<input type="radio" name="appointment" value="Individual">Make an individual appointment</input><br>
 				  	<input type="radio" name="appointment" value="Group">Make a group appointment</input><br>

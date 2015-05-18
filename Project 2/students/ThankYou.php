@@ -24,7 +24,8 @@ if(!$_SESSION["auth"])
 <html>
 <head>
    <title>Academic Advising Appointment</title>
-   <link rel="icon" type="image/png" href="images//icon.png" />
+   <link rel="shortcut icon" href="Pictures/favicon.ico" />
+   <link rel="icon" type="image/png" href="images/icon.png" />
    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 </head>
  

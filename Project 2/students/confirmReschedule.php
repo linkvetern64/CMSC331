@@ -3,8 +3,6 @@
 //start the session
  session_start();
 
-include('../advisors/libs.php');
-
 //include global variables
 include('globals/globalVariables.php');
 
@@ -70,71 +68,9 @@ if(isset($_POST['confirm']))
 
    $sql = "INSERT INTO `appointments` (`student_id`, `advisor`, `appt_type`, `appt_date`, `appt_time`)
 				VALUES ('$student_id', '$advisor', '$appt_type', '$appt_date', '$appt_time')";
-   $appt_date2 = $appt_date;
 
 
    $result = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-
-
-   //Code to modify the data in the advisor DB, first cancels original appointment
-   
-   $conn = connect();
-
-   //Determine advisor id
-   $advisorName = explode(" ", $adviser);
-   $results = mysql_fetch_array(mysql_query("SELECT `id` FROM `Advisors` WHERE firstName = '$advisorName[0]' AND lastName = '$advisorName[1]'"));
-   $advisor_id = $results[0];
-
-   $results1 = mysql_fetch_array(mysql_query("SELECT `Calendar_Key` FROM `Calendar` WHERE id = '$advisor_id' AND Date_ID = '$dt'"));
-   $appt_Key = $results1[0];
-
-   //Match Time Column label
-   $tempAppt_time = ltrim (substr($t,0,5), '0');
-    //Update entry with "NULL"
-   mysql_query("UPDATE `Calendar` SET `$tempAppt_time` = NULL WHERE `Calendar_Key` = '$appt_Key'");
-   disconnect($conn);
-
-
-
-   //Now adds new appointment
-   //Code to update the advisor side DBs
-
-   //First, check if the new calendar key already exists. If it does not, create it
-   //and insert new row into the calendar table
-   $newAdvisorName = explode(" ", $advisor);
-   $conn = connect();
-   	 $results2 = mysql_fetch_array(mysql_query("SELECT `id` FROM `Advisors` WHERE firstName = '$newAdvisorName[0]' AND lastName = '$newAdvisorName[1]'"));
-   disconnect($conn); 
-   $advisor_id2 = $results2[0];
-
-   $appt_Key2 = $advisor_id2."/".$appt_date2;
-
- 
-   if(!createCalendarKey($appt_date2,$advisor_id2)) {
-   	//Create boolean for group appointment
-	if($appt_type == "Group"){
-		$Group = 1;	
-	}
-	else{
-		$Group = 0;
-	}
-
-	//Connect to advisor DB
-   	$conn = connect();
-
-	//Create the new row
-	mysql_query("INSERT INTO `jstand1`.`Calendar` (`id`,`Date_ID`,`Calendar_Key`,`isGroup`)
-			    VALUES ('$advisor_id2','$appt_date2','$appt_Key2','$Group')");
-	disconnect($conn);
-   }
-
-   //Now that the appointment row already exists, simply update the existing row
-    $tempAppt_time = ltrim (substr($appt_time,0,5), '0');
- 
-   $conn = connect();
-   mysql_query("UPDATE `Calendar` SET `$tempAppt_time` = '$student_id' WHERE `Calendar_Key` = '$appt_Key2'");
-   disconnect($conn);
-
  
    header('Location: deletedAppointment.php');
 
@@ -151,7 +87,8 @@ elseif(isset($_POST['go_back']))
 <html>
 <head>
    <title>Academic Advising Appointment</title>
-   <link rel="icon" type="image/png" href="images//icon.png" />
+   <link rel="shortcut icon" href="Pictures/favicon.ico" />
+   <link rel="icon" type="image/png" href="images/icon.png" />
    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 </head>
  

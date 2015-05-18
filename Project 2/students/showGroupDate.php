@@ -13,6 +13,10 @@ session_start();
 //include global variables => full name, id, and major
 include('globals/globalVariables.php');
 
+//include global functions
+include('globals/myFunctions.php');
+
+
 //validation
 $error = false;
 $error_msg = '';
@@ -24,11 +28,24 @@ if(!$_SESSION["auth"])
 
 elseif(isset($_POST['continue'])){
   
+  $advisor = "Group Group";
+  
   if(empty($_POST['date']))
   {
      $error = true;
      $error_msg = "Please choose a date.";
   }
+
+  //Validation for valid Group availability
+  //to use with explode firstName and lastName
+  // which is Group Group to get id = 0;
+
+  elseif(!availableDate($_POST['date'],$advisor))
+  {
+     $error = true;
+     $error_msg = "Group appointments are not available that day!";
+  }
+
   else
   {
      $_SESSION['appt_type'] = "Group";
@@ -40,7 +57,7 @@ elseif(isset($_POST['continue'])){
      $_SESSION['appt_date'] = $date;
 
      //set the advisor field to All
-     $_SESSION['advisor'] = All;
+     $_SESSION['advisor'] = "All";
 
      //show the available times on next page
      header('Location: showGroupTime.php');
@@ -65,7 +82,8 @@ elseif(isset($_POST['go_back']))
 <html>
 <head>
    <title>Academic Advising Appointment</title>
-   <link rel="icon" type="image/png" href="images//icon.png" />
+   <link rel="shortcut icon" href="Pictures/favicon.ico" />
+   <link rel="icon" type="image/png" href="images/icon.png" />
    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 
    <link rel="stylesheet" type="text/css" href="css/mystyle.css">

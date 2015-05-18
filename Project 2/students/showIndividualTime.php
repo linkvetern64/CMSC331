@@ -3,8 +3,6 @@
 //start the session
 session_start();
 
-include('../advisors/libs.php');
-
 //include global variables
 include('globals/globalVariables.php');
 
@@ -30,6 +28,12 @@ if(!$_SESSION["auth"])
 $time_arr = array('09:00:00','09:30:00','10:00:00','10:30:00','11:00:00','11:30:00','12:00:00','12:30:00','01:00:00','01:30:00','02:00:00','02:30:00','03:00:00','03:30:00');
 $arr_len = 14;
 
+setMajorTimes($major, $advisor_id, $time_arr);
+
+setAvailableTimes($day, $advisor_id, $time_arr);
+
+
+
 $appointment = "Individual";
 
 $sql = "SELECT * FROM `appointments` WHERE `appt_type` = '$appt_type'
@@ -38,20 +42,10 @@ $sql = "SELECT * FROM `appointments` WHERE `appt_type` = '$appt_type'
 $result = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
 
-	//Code to determine if the major has any limitations
-	$conn = connect();
-	$results = mysql_fetch_array(mysql_query("SELECT `firstAppt`,`lastAppt` FROM `Majors` WHERE `Name` = '$major' AND `id` = '$advisor_id'"));
-	$majStart = $results[0];
-	$majEnd = $results[1];
-	disconnect($conn);
-
-
 while($row = mysql_fetch_array($result))
 {
    setTime($time_arr, $arr_len, $row['appt_time']);
-   majorTime($time_arr,$arr_len, $majStart, $majEnd);
-}
-
+}	
 
 if(isset($_POST['continue'])){
   
@@ -69,8 +63,18 @@ if(isset($_POST['continue'])){
   	//set the value for appointment type
   	$_SESSION['appt_time'] = $time;
 
-	//Generates Calendar Key
-	createCalendarKey($appt_date,$advisor_id);
+	//Updates the advisor side Table as appropriate
+	if(createCalendarKey($appt_date,$advisor_id)){
+
+	//Insert Code to create new row in 'Calendar' Table
+	//Default Settings will be a 9-4 shift if Advisor had
+	//Availability for that day
+	
+
+	}
+	else{
+	//Code to update an already existing row in 'Calendar' Table
+	}
 	
 	if($_SESSION['reschedule'] == true)
         {
@@ -93,7 +97,8 @@ elseif(isset($_POST['go_back']))
 <html>
 <head>
    <title>Academic Advising Appointment</title>
-   <link rel="icon" type="image/png" href="images//icon.png" />
+   <link rel="shortcut icon" href="Pictures/favicon.ico" />
+   <link rel="icon" type="image/png" href="images/icon.png" />
    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 </head>
  
@@ -121,12 +126,6 @@ elseif(isset($_POST['go_back']))
 		<form action="?" id="showDate" method="POST">
 			<div class="student_info">
 
-				<!-- if the available appointment array is empty, then error is displayed that appointments are full -->
-				<?php if(ifempty($time_arr)==1) { ?>
-				<font color="red" size="5"><center>Individual appointments are full!</center>
-				<font color="red" size="3">Note: please go back and select a different date or another advisor.</font></font>
-				<?php } else { ?>
-
 				<div class="center"><div class="legendFont">Please choose an available appointment time.</div></div>
 				<br>
 				<table>
@@ -144,7 +143,6 @@ elseif(isset($_POST['go_back']))
 
 				</select>
 				</table>
-				<?php } ?></br>
 
 			</div>    
 			<div id="showDateButton">

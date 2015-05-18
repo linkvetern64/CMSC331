@@ -63,6 +63,7 @@ elseif(isset($_POST['go_back']))
 <html>
 <head>
    <title>COEIT Academic Advising</title>
+   <link rel="shortcut icon" href="Pictures/favicon.ico" />
    <link rel="icon" type="image/png" href="images/icon.png" />
    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
 </head>
@@ -100,7 +101,7 @@ elseif(isset($_POST['go_back']))
 							<!-- Dynamically populate advisors list -->
 							<?php
 								$advisors = getAdvisorList();
-								for($i = 0; $i < numAdvisors(); $i++){
+								for($i = 1; $i < numAdvisors(); $i++){
 									echo("<input type='radio' name='advisor' value='" . $advisors[$i] . "'>" . $advisors[$i] . "</input><br>");
 								}
 							?>

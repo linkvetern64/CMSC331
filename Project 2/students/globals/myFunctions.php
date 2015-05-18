@@ -15,6 +15,8 @@
 //	   otherwise check if it exists in proceeding index
 //	   does not return, but it does change the array elements
 
+include("../advisors/libs.php");
+include("globalVariables.php");
 
 function setTime(&$array, $len, $time) 
 {
@@ -23,26 +25,6 @@ function setTime(&$array, $len, $time)
    while($counter >= 0)
    {
 	if($array[$counter] == $time)
-	{
-	    $array[$counter] = NULL;
-	}
-	$counter = $counter - 1;
-   }
-}
-
-//majorTime: parameters include a time array, its length, and start/end time variables 
-//	   if the time variable is outside the range, then the advisors
-//	      have listed that time as unavailable to the major
-//	      therefore set the time to NULL ==> 
-
-
-function majorTime(&$array, $len, $time1, $time2) 
-{
-   $counter = $len;
-
-   while($counter >= 0)
-   {
-	if($array[$counter] > $time1 && $array[$counter] < $time2)
 	{
 	    $array[$counter] = NULL;
 	}
@@ -66,6 +48,7 @@ function formatTime($time)
  {
     return NULL;
  }
+
  else
  {
    if($formatted == "12:00")
@@ -164,6 +147,8 @@ function availableDate($date,$advisor) {
 	//Checks what day of the week it is
 	$dayOfWeek = date('l',strtotime($date));
 
+	$_SESSION['day'] = $dayOfWeek;
+
 	//Check if that advisor has availability that day, return result
 	$result2 = mysql_fetch_array(mysql_query("SELECT `" . $dayOfWeek . "` FROM `Availability` WHERE id = $advisor_id"));
 	disconnect($conn);
@@ -174,7 +159,7 @@ function availableDate($date,$advisor) {
 }
 
 //
-//createCalendarKey: parameters passed in are day and advisor name
+//calendarKeyExists: parameters passed in are day and advisor name
 //		 The function creates a calendar key if it does not exists
 //		 already. If it does exist, it returns false.
 
@@ -182,21 +167,113 @@ function createCalendarKey($date,$advisor_id){
 	 $appt_Key = $advisor_id."/".$date;
 
 	 $conn = connect();
-	$results = mysql_fetch_array(mysql_query("SELECT `Calendar_Key` FROM `Calendar` WHERE id = '$advisor_id' AND Date_ID = '$date'"));
+	$results = mysql_fetch_array(mysql_query("SELECT `Calendar_Key` FROM `Calendar` WHERE id = $appt_Key"));
 	disconnect($conn);
 
-	 //The logic to create a key
-	 $_SESSION['appt_Key'] = $appt_Key;
-	 
-	 //If the object existed, return true
+	 //The logic to create a key if it does NOT exist
 	 if($results[0]){
+	 $_SESSSION['appt_Key'] = $appt_Key;
 	 return 1;
 	 }
 
-	 //The alternative to return that the key did not exist
+	 //The alternative to return that the key already exists
 	 else {
 	 return 0;
 	 }
 }
+
+
+function setAvailableTimes($day, $advisor_id, &$array)
+{
+	$conn = connect();
+	$result = mysql_fetch_array(mysql_query("SELECT `9:00`, `9:30`, `10:00`, `10:30`, `11:00`, `11:30`, `12:00`, `12:30`, `1:00`, `1:30`, `2:00`, `2:30`, `3:00`, `3:30` FROM `AvailableTimes` WHERE `day` = '$day' AND `id` = '$advisor_id'"));
+	disconnect($conn);
+	
+	$counter = 0;	
+	$len = 13;
+	
+	while($counter <= $len)
+	{
+		if($result[$counter] == 0)
+		{
+			$array[$counter] = NULL;
+		}
+		$counter++;
+	}
+}
+
+function setAvailableSpots($day, $advisor_id, &$array)
+{
+	$conn = connect();
+	$result = mysql_fetch_array(mysql_query("SELECT `9:00`, `9:30`, `10:00`, `10:30`, `11:00`, `11:30`, `12:00`, `12:30`, `1:00`, `1:30`, `2:00`, `2:30`, `3:00`, `3:30` FROM `AvailableTimes` WHERE `day` = '$day' AND `id` = '$advisor_id'"));
+	disconnect($conn);
+	
+	$counter = 0;	
+	$len = 13;
+	
+	while($counter <= $len)
+	{
+		if($result[$counter]  != 0)
+		{
+			$array[$counter] = $result[$counter];
+		}
+		$counter++;
+	}
+}
+
+
+function setMajorTimes($major, $advisor_id, &$array)
+{
+	$conn = connect();
+	$result = mysql_fetch_array(mysql_query("SELECT `firstAppt`, `lastAppt` FROM `Majors` WHERE `Name` = '$major' AND `id` = '$advisor_id'"));
+	disconnect($conn);
+
+	$firstAppt = $result[0];
+	$lastAppt = $result[1];
+	$counter = 0;
+	$len = 13;
+
+
+	while($counter <= $len)
+	{
+		if($array[$counter] == $firstAppt)
+		{
+			$firstCounter = $counter;
+		}
+		if($array[$counter] == $lastAppt)
+		{
+			$lastCounter = $counter;
+		}
+		$counter++;
+	}
+
+	$counter = 0;
+
+	while($counter <= $len)
+	{
+		if(($counter < $firstCounter) || ($counter > $lastCounter))
+		{
+			$array[$counter] = NULL;
+		}
+		$counter++;
+	}
+}
+
+function setApptKey($advisor_id, $appt_date, $appt_time) 
+{
+   $t_arr = explode(":", $appt_time);
+   $hour = $t_arr[0];
+   $minutes = $t_arr[1];
+
+   if($hour < 10)
+   {
+	$hour = substr($hour, 1, 4);
+   }
+ 
+   $time = $hour. ":". $minutes;
+   $_SESSION['newTime'] = $time;
+   
+   return ($advisor_id ."/". $appt_date ."/". $time);
+}	
 
 ?>
